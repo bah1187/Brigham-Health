@@ -98,7 +98,7 @@ global variables
 })();
 
 $('.menu-button').click(function(){
-    $('.main-nav').slideToggle();
+    $('.main-nav').slideToggle('fast');
 });
 
 $(window).load(function() {

@@ -1,4 +1,6 @@
 @import "compass/css3", "compass/support", "../../shared/sass/utilities/functions", "../../shared/sass/utilities/mixins", "../../shared/sass/utilities/extends", "../../shared/sass/utilities/normalize";
+@import '../../3461/shared/scss/social-icons';
+
 
 /* =================================================================
 variables
@@ -167,7 +169,7 @@ normalize-scss 3.0.2+normalize.3.0.2 | MIT/GPLv2 License | bit.ly/normalize-scss
 $strict-normalize: true !default;
 
 // The default font family.
-$base-font-family: sans-serif !default;
+$base-font-family: "open sans" !default;
 
 // The font sizes for h1-h6.
 $h1-font-size: 2    * $base-font-size !default;
@@ -1003,9 +1005,10 @@ border-bottom: 5px solid #0090ac;
 
     }
 	> div {
-		padding-top: 10px;
+		padding-top: 20px;
 		padding-left: 10px;
-        padding-right: 10px;
+    padding-right: 10px;
+		padding-bottom: 12px;
 		float: left;
 		width: 100%;
 		@include breakpoint($end-small) {
@@ -1015,6 +1018,11 @@ border-bottom: 5px solid #0090ac;
             padding-left: 20px;
             padding-right: 20px;
         }
+				@include breakpoint(1075px) {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
         @include breakpoint($most-max-width) {
             padding-left: 0;
             padding-right: 0;
@@ -1023,7 +1031,7 @@ border-bottom: 5px solid #0090ac;
 
 	.logo {
     	display: inline-block;
-    	max-width: 267px;
+    	max-width: 250px;
     	width: 72%;
     	img {
     		display: inline-block;
@@ -1038,102 +1046,63 @@ border-bottom: 5px solid #0090ac;
     	}
     }
 
-    span.menu-button {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_0/img/hamburger-button.png');
-        background-repeat: no-repeat;
-        width: 32px;
-        height: 22px;
+    .menu-button {
+      	background: none;
+				border: none;
+        width: 30px;
+        height: 20px;
         display: block;
         float: right;
+				padding: 0;
 
         @include breakpoint($end-small) {
             display: none;
         }
+
+				span {
+					background: #002d59;
+					display: block;
+					height: 5px;
+					width: 100%;
+					margin-bottom: 2px;
+				}
     }
 
-    .social-media {
-         float: right;
-        margin: 0;
-        padding: 0;
-        clear: both;
-
-        @media screen and (min-width: 500px) {
-        margin: 1em 0 0;
-        }
-
-        @include breakpoint($end-small) {
-           margin: 0;
-        }
-
-         li {
-            display: inline-block;
-            //width: 20px;
-            //overflow: hidden;
-            padding: 0 .3em;
-
-            &:last-child {
-            padding: 0 0 0 .3em;
-            }
-
-          a {
-          display: block;
-          height: 17px;
-          width: 17px;
-          margin: 0;
-          text-indent: -999em;
-          background: url("//tbcdn.talentbrew.com/company/451/v1_0/img/ico-social-media.png") left top no-repeat;
-          overflow: hidden;
-
-          	&.social-media-facebook {
-			background-position: 0 0;
-			width: 8px;
-			}
-
-			&.social-media-twitter {
-			background-position: -17px 0;
-			width: 16px;
-			}
-
-			&.social-media-linkedin {
-			background-position: -43px 0;
-			width: 14px;
-			}
-
-			&.social-media-instagram {
-			background-position: -67px 0;
-			width: 15px
-			}
-
-			&.social-media-youtube {
-			background-position: -92px 0;
-			}
-
-			&.social-media-glassdoor{
-			background-position: -118px 0;
-			width: 10x;
-			}
-
-          }
-        }
-    }
 
     nav.main-nav {
-        text-align: center;
+
         display: none;
-         margin: 2em 0 0;
+        margin: 1em 0 0;
 
         @include breakpoint($end-small) {
             display: block !important;
-            text-align: right;
-            margin: 0;
+            margin: 20px 0 0;
         }
+				@include breakpoint(1075px) {
+					width: calc(100% - 270px);
+			    max-width: 844px;
+					margin: 0;
+				}
+
+				ul {
+					@include breakpoint($end-small) {
+						display: flex;
+						justify-content: space-between;
+					}
+				}
 
         li {
             margin: 15px;
 
+						&:last-child {
+
+								a {
+									border-bottom: none;
+								}
+						}
+
             @include breakpoint($end-small) {
-                display: inline-block;
-                margin-top: 0;
+                margin: 0 15px 0 0;
 
                 &:last-child {
                     margin-right: 0;
@@ -1142,12 +1111,17 @@ border-bottom: 5px solid #0090ac;
         }
 
         a {
+						display: block;
+						border-bottom: 1.3px solid #6c6c6c;
+						color: #2f2f2f;
+						font-size: 14px;
+						font-weight: bold;
             padding-bottom: 3px;
+						text-transform: uppercase;
 
-            &.active,
-            &:hover {
-                border-bottom: 2px solid #0098b0;
-        	}
+						@include breakpoint($end-small) {
+							border-bottom: none;
+						}
 
         	&.active {
         	    cursor: default;
@@ -1696,78 +1670,111 @@ About Section
 }
 
 /* =================================================================
-Large Social Media
+Social Media
 ================================================================= */
- .social-media.large-media {
-    margin: 0 auto;
-    padding: 0;
-    clear: both;
-    display: none;
-    margin-bottom: 1.5em;
-    @include breakpoint($end-small) {
-       display: block;
-       width: 560px;
 
-    }
 
-    h2 {
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: .2em;
-    }
-    ul {
-        text-align: center;
-    }
-     li {
-        display: inline-block;
-        //width: 20px;
-        //overflow: hidden;
-        padding: 0 .3em;
+.social-media{
+	background: #e4e4e4;
+	padding: 5px 10px;
+	border: 1px solid #d4d4d4;
+	border-width: 1px 0;
+	@include breakpoint(600px) {
+		padding: 15px;
+	}
+	@include breakpoint($end-small) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-        &:last-child {
-        padding: 0 0 0 .3em;
-        }
-
-      a {
-      display: block;
-      height: 64px;
-      width: 64px;
-      margin: 0;
-      text-indent: -999em;
-      background: url("//tbcdn.talentbrew.com/company/451/v1_1/img/social-big.png") left top no-repeat;
-      overflow: hidden;
-        width: 70px;
-      	&.social-media-facebook {
-		background-position: 24px 0;
-
+	h2 {
+		font-size: 12px;
+		font-weight: 600;
+		color: #6b6d6f;
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom: 15px;
+		@include breakpoint($end-small) {
+			margin-bottom: 0;
+			font-size: 16px;
 		}
+	}
 
-		&.social-media-twitter {
-		background-position: -61px 0;
-
+ ul {
+		 list-style: none;
+		 margin: 0 auto;
+		 padding: 0 30px;
+		 display: flex;
+		 align-items: center;
+		 flex-wrap: wrap;
+		 max-width: 365px;
+		 @include breakpoint(600px) {
+			 max-width: none;
+			 justify-content: center;
+		 }
+		 @include breakpoint($end-small) {
+			padding: 0;
+			margin: 0 0 0 15px;
 		}
+ }
 
-		&.social-media-linkedin {
-		background-position: -152px 0;
+ li {
+	 width: 25%;
+	 margin-bottom: 20px;
+	 @include breakpoint(600px) {
+		 width: auto;
+		 margin-right: 20px;
+	 }
+	 @include breakpoint(600px) {
+		 width: auto;
+		 margin-bottom: 0;
+	 }
+ }
 
-		}
+ a {
+	 display: block;
+	 text-indent: -999em;
+	 overflow: hidden;
+	 text-align: left;
+	 background: center / contain no-repeat;
+	 // Change height and width to change icon size
+	 width: 30px;
+	 height: 30px;
+ }
 
-		&.social-media-instagram {
-		background-position: -247px 0;
+} // End shared styles between social media and social share
 
-		}
+// Social media styles
+.social-media {
+ a {
+	 margin: 0 auto;
+	 &.social-media-linkedin {
+		 @include icon-bg-linkedin(none, #6b6d6f);
+	 }
+	 &.social-media-twitter{
+		 @include icon-bg-twitter(#6b6d6f, none);
+		 background-size: 40px;
+	 }
+	 &.social-media-facebook {
+		 @include icon-bg-facebook(none, #6b6d6f);
+	 }
+	 &.social-media-youtube {
+		 @include icon-bg-youtube(#6b6d6f, none);
+		background-size: 40px;
+	 }
+	 &.social-media-instagram {
+		 @include icon-bg-instagram(#6b6d6f, none);
+		background-size: 40px;
+	 }
+ } // End of anchor tag for social media
 
-		&.social-media-youtube {
-		background-position: -341px 0;
-		}
+} // End Social Media Styles
 
-		&.social-media-glassdoor{
-		background-position: -428px 0;
-		}
 
-      }
-    }
-}
+
+
+
 
 /* =================================================================
 Facebook Plugin Module
@@ -3884,83 +3891,7 @@ CP - Working At BWFH
 /* =================================================================
 Footer
 ================================================================= */
-.desktop-tel {
-    display: none;
-    @include breakpoint($end-small) {
-     display: inline-block;
-    }
-}
-.mobile-tel {
-    display: inline-block;
-     @include breakpoint($end-small) {
-      display: none;
-     }
-}
 
-footer {
-
-    padding: 15px;
-    background-color: $primary;
-    color: #fff;
-    font-size: 12px;
-    margin-top: 20px;
-
-    @include breakpoint($end-small) {
-        padding: 20px 0;
-
-    }
-
-    #search &, #job & {
-        margin-top: 0;
-    }
-
-    a,
-    a:hover {
-        color: #fff;
-    }
-
-    .footer-nav {
-        text-align: center;
-        margin-bottom: 20px;
-
-        li {
-            display: inline-block;
-
-            a {
-                border-right: 1px solid #fff;
-                padding: 0 10px 0 5px;
-            }
-
-            &:last-child a {
-                border: 0px;
-                padding-right: 0;
-            }
-        }
-    }
-
-    .vcard {
-        width: 110px;
-        margin: -5px auto 0;
-    }
-
-    > div {
-        @include breakpoint($end-small) {
-            max-width: 1240px;
-            float: none;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        @include breakpoint($most-max-width) {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
-
-    p {
-        margin-bottom: 0;
-    }
-}
 
 /* =================================================================
 Job Alerts Management

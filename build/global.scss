@@ -3892,6 +3892,180 @@ CP - Working At BWFH
 Footer
 ================================================================= */
 
+.footer-top {
+  padding: 0 10px;
+  max-width: 1260px;
+  margin: 0 auto;
+  @include breakpoint($end-small) {
+    padding: 35px 10px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: 10px auto 30px;
+  @include breakpoint($end-small) {
+    margin: 0 0 30px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.contact-info {
+  text-align: center;
+  @include breakpoint($end-small) {
+    text-align: left;
+    width: 37%;
+    max-width: 340px;
+  }
+
+  &__headline {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #2f2f2f;
+    margin: 0 auto 15px;
+    border-bottom: 1px solid #2f2f2f;
+    padding-bottom: 10px;
+  }
+
+  &__address {
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2f2f2f;
+    text-transform: uppercase;
+
+  }
+
+  &__contact-link {
+    font-size: 12px;
+    font-weight: 600;
+
+    &:nth-of-type(2) {
+      &:after {
+        content: "|";
+        color: #2f2f2f;
+        padding: 0 5px;
+
+      }
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+
+    span {
+      color: #2f2f2f;
+      padding-right: 5px;
+      font-weight: 600;
+    }
+
+    a {
+      font-weight: 600;
+    }
+
+  }
+}
+
+.footer-links {
+  width: 50%;
+  @include breakpoint($end-small) {
+    width: 32%;
+  }
+  @include breakpoint(1000px) {
+    width: 26%;
+
+    &:nth-of-type(2) {
+      width: 42%;
+    }
+  }
+
+  // change from 2 col to 1 at desktop
+
+  & .col-1-large {
+    @include breakpoint($end-small) {
+      float: none;
+      width: 100%;
+
+        &:nth-of-type(2){
+        border: none;
+        padding-top: 0;
+      }
+
+    }
+  }
+
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include breakpoint($end-small) {
+      width: 62%;
+      max-width: 800px;
+    }
+  }
+
+  &__heading {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #2f2f2f;
+  }
+
+  &__list {
+    border-top: 1px solid #2f2f2f;
+    float: left;
+    width: 50%;
+    padding-top: 12px;
+    line-height: 9px;
+    @include breakpoint(1200px) {
+      line-height: 12px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 5px;
+    @include breakpoint(1200px) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__link {
+    color: #0067b1;
+    font-size: 9px;
+    font-weight: 600;
+    @include breakpoint(1200px) {
+      font-size: 10px;
+    }
+
+  }
+
+}
+
+.footer-bottom {
+  background: #002d5a;
+  padding: 0 10px;
+
+  &__images {
+
+    img {
+      width: calc(50% - 16px);
+      float: left;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
 
 /* =================================================================
 Job Alerts Management

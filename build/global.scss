@@ -11,7 +11,7 @@ $max-width: 962px;
 $content-width: 903px;
 $most-max-width: 1240px;
 
-$primary: #00579f;
+$primary: #0067b1;
 $primary-contrast: #fff;
 $lt-gray: #f1f1f1;
 $accent: #e1e1e1;
@@ -290,7 +290,7 @@ summary {
 
 main {
 
-	padding: 30px 10px;
+	padding: 30px 0;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	width: 100%;
@@ -306,26 +306,26 @@ main {
 		padding: 10px 0;
 		overflow-y: auto;
 	}
-	#search &, #job &, #job-match &, #job-location &, #error & {
-	    @include breakpoint($end-small) {
-            margin: 30px auto 0 auto;
-            max-width: $most-max-width;
-            padding: 0 20px;
-	    }
-    	@include breakpoint(1280px) {
-    	    padding: 0;
-    	}
-		> section {
-			@include breakpoint($end-small) {
-				float: left;
-				width: 72%;
-				padding-left: 20px;
-			}
-			@include breakpoint(1280px) {
-			    padding-left: 0;
-			}
-		}
-	}
+	// #search &, #job &, #job-match &, #job-location &, #error & {
+	//     @include breakpoint($end-small) {
+  //           margin: 30px auto 0 auto;
+  //           max-width: $most-max-width;
+  //           padding: 0 20px;
+	//     }
+  //   	@include breakpoint(1280px) {
+  //   	    padding: 0;
+  //   	}
+	// 	> section {
+	// 		@include breakpoint($end-small) {
+	// 			float: left;
+	// 			width: 72%;
+	// 			padding-left: 20px;
+	// 		}
+	// 		@include breakpoint(1280px) {
+	// 		    padding-left: 0;
+	// 		}
+	// 	}
+	// }
 
 }
 
@@ -450,7 +450,7 @@ dfn {
  */
 
 h1, h2, h3 {
-	color: $primary;
+	color: #2f2f2f;
 }
 
 h1 {
@@ -889,95 +889,157 @@ th {
 /* Responsive Iframe videos
    ========================================================================== */
 
-.video-wrapper {
+
+.lazy-video{
+  width:100%;
+
+
+  a {
     position: relative;
-	@include vw-height(168px, 426px, $end-small);
-	width: 100%;
-	margin-bottom: 10px;
+    display: block;
 
-	@include breakpoint($end-small) {
-	    height: 211px;
-	    max-width: 375px;
-	    float: right;
-	}
+    &:after {
+      content: " ";
+      display: block;
+      background: url('../v2_0/img/play-button.png');
+      width: 53px;
+      height: 34px;
+      position: absolute;
+      background-size: cover;
+      top:50%;
+      left:50%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: .3s;
+    }
 
-    iframe,
-    object,
-    embed {
+    &:hover, &:focus {
+
+      &:after {
+        transform: scale(1.2) translateX(-50%) translateY(-50%);
+        transition: .3s;
+      }
+    }
+  }
+
+
+
+
+  .video-wrapper{
+    height: 0;
+    position: relative;
+    padding-top: 25px;
+    padding-bottom:56.25%;
+
+    iframe{
+        border: 0;
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
+      }
+  }
+
+  img{
+    width:100%;
+  }
+
+  &.active{
+    a{
+      display:none;
     }
+  }
 }
 
-
-.video-content {
-position: relative;
-
-	@include breakpoint($end-small) {
-	max-width: 375px;
-	float: right;
-	width: 50%;
-	}
-	&.about-us {
-	    @include breakpoint($end-small) {
-	        max-width: 50%;
-	    }
-	}
-}
-
-		.vod {
-		display: block;
-		height: 0;
-		max-width: 100%;
-		overflow: hidden;
-		padding-bottom: 56.25%;
-		position: relative;
-
-		  img, iframe {
-		  width: 100%;
-		  }
-
-		  iframe {
-		  border: 0;
-		  height: 100%;
-		  left: 0;
-		  position: absolute;
-		  top: 0;
-		  z-index: 100;
-		  }
-
-		  .vod-label {
-		  display: block;
-		  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-		  color: white;
-		  font: normal 17px/normal Arial,Helvetica,sans-serif;
-		  left: 0;
-		  margin: 0;
-		  overflow: hidden;
-		  padding: 1.5em 1em 2em;
-		  position: absolute;
-		  text-overflow: ellipsis;
-		  text-shadow: black 1px 1px;
-		  top: 0;
-		  white-space: nowrap;
-		  width: 100%;
-		  z-index: 2;
-		  }
-
-		  &:before, &:after {
-		  content: "";
-		  left: 50%;
-		  position: absolute;
-		  top: 50%;
-		  transition: all 0.2s ease-in-out;
-		  }
-
-
-
-		}
+// .video-wrapper {
+//     position: relative;
+// 	@include vw-height(168px, 426px, $end-small);
+// 	width: 100%;
+// 	margin-bottom: 10px;
+//
+// 	@include breakpoint($end-small) {
+// 	    height: 211px;
+// 	    max-width: 375px;
+// 	    float: right;
+// 	}
+//
+//     iframe,
+//     object,
+//     embed {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//     }
+// }
+//
+//
+// .video-content {
+// position: relative;
+//
+// 	@include breakpoint($end-small) {
+// 	max-width: 375px;
+// 	float: right;
+// 	width: 50%;
+// 	}
+// 	&.about-us {
+// 	    @include breakpoint($end-small) {
+// 	        max-width: 50%;
+// 	    }
+// 	}
+// }
+//
+// 		.vod {
+// 		display: block;
+// 		height: 0;
+// 		max-width: 100%;
+// 		overflow: hidden;
+// 		padding-bottom: 56.25%;
+// 		position: relative;
+//
+// 		  img, iframe {
+// 		  width: 100%;
+// 		  }
+//
+// 		  iframe {
+// 		  border: 0;
+// 		  height: 100%;
+// 		  left: 0;
+// 		  position: absolute;
+// 		  top: 0;
+// 		  z-index: 100;
+// 		  }
+//
+// 		  .vod-label {
+// 		  display: block;
+// 		  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+// 		  color: white;
+// 		  font: normal 17px/normal Arial,Helvetica,sans-serif;
+// 		  left: 0;
+// 		  margin: 0;
+// 		  overflow: hidden;
+// 		  padding: 1.5em 1em 2em;
+// 		  position: absolute;
+// 		  text-overflow: ellipsis;
+// 		  text-shadow: black 1px 1px;
+// 		  top: 0;
+// 		  white-space: nowrap;
+// 		  width: 100%;
+// 		  z-index: 2;
+// 		  }
+//
+// 		  &:before, &:after {
+// 		  content: "";
+// 		  left: 50%;
+// 		  position: absolute;
+// 		  top: 50%;
+// 		  transition: all 0.2s ease-in-out;
+// 		  }
+//
+//
+//
+// 		}
 
 
 
@@ -1361,6 +1423,7 @@ Search Form Wrapper
     @include clearfix;
 
 
+
     @include breakpoint($end-small) {
         width: 100%;
         padding-bottom: 10px;
@@ -1373,8 +1436,10 @@ Search Form Wrapper
         color: #fff;
     }
     .search-form-title {
-        font-size: 21px;
+        font-size: 18px;
         line-height: 1.2em;
+        font-weight: 500;
+        margin: 0 0 12px;
         @include breakpoint($end-small) {
             font-size: 26px;
             text-align: center;
@@ -1389,9 +1454,7 @@ Job Matching Link
 ================================================================= */
 
 .jm-link {
-    max-width: 235px;
-    border: 1px solid #fff;
-    margin: 1em auto;
+
     #job-match & {
         display: none;
     }
@@ -1399,9 +1462,38 @@ Job Matching Link
     @include breakpoint($end-small) {
         position: absolute;
         right: 40px;
-        bottom: 0;
+        bottom: 15px;
         margin-top: 10px;
         width: 235px;
+    }
+
+    a {
+      background: #002d59;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 14px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      width: 230px;
+      margin: 15px auto 0;
+      justify-content: space-between;
+      @include breakpoint($end-small) {
+        padding: 7px 15px;
+      }
+
+
+      &:after {
+        content: " ";
+        background: url('../v2_0/img/linkedin-logo.png');
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+
     }
 
     img {
@@ -1441,8 +1533,9 @@ About Section
 ================================================================= */
 .about {
     @include clearfix;
+    padding: 0 10px;
      @include breakpoint($end-small) {
-        max-width: 1240px;
+        max-width: 1125px;
         margin: 0 auto;
         padding: 0 10px;
      }
@@ -1450,20 +1543,16 @@ About Section
         padding: 30px 0;
      }
    h2 {
-        font-size: 20px;
+        font-size: 35px;
         line-height: 1.2;
         margin: 10px 0;
+        font-family: "palantino";
         @include breakpoint($end-small) {
             margin-bottom: 20px;
         }
    }
    .text-section {
        margin-bottom: 30px;
-        @include breakpoint($end-small) {
-            display: inline-block;
-            margin-top: 0;
-            width: 49%;
-       }
    }
    p {
        @include font-size(14px);
@@ -1478,31 +1567,50 @@ About Section
        width: 100%;
    }
 
+   .about-us-video {
+     max-width: 900px;
+     margin: 0 auto;
+     @include breakpoint($end-small) {
+       border: 10px solid #fff;
+       -webkit-box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.11);
+       -moz-box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.11);
+       box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.11);
+      }
+   }
+
 
 }
 
 .team-array {
-    background-color: #c6cacb;
     @include clearfix;
     margin: 20px auto;
-    padding: 10px 40px 25px 40px;
+    padding: 0 10px;
+
     .inner-wrapper {
         > h2 {
-            text-align: center;
-            font-size: 20px;
+            text-align: left;
+            font-size: 30px;
             line-height: 1em;
+            font-family: "palatino";
             @include breakpoint($end-small) {
                 font-size: 24px;
                 margin-top: 15px;
             }
+            @include breakpoint(1200px) {
+              padding-left: 60px
+            }
         }
         > p {
-            text-align: center;
+            text-align: left;
             font-size: 16px;
             line-height: 1em;
             margin-top: 0;
+            margin-bottom: 30px;
             @include breakpoint($end-small) {
                 margin-bottom: 2em;
+            }
+            @include breakpoint(1200px) {
+              padding-left: 60px
             }
         }
     }
@@ -1515,7 +1623,6 @@ About Section
             position: relative;
             width: 100%;
             border-spacing: 25px 0;
-            max-width: 1005px;
             margin: 0 auto;
         }
     }
@@ -1526,10 +1633,12 @@ About Section
     }
     li {
         width: 100%;
+        margin-bottom: 19px;
+        position: relative;
         @include breakpoint($end-small) {
             display: inline-block;
             width: 31%;
-            margin: 0 2%;
+            margin: 0 8px;
 
 
         }
@@ -1541,30 +1650,36 @@ About Section
         background-position: center center;
         background-repeat: no-repeat;
         display: block;
-        margin-bottom: 19px;
         @include breakpoint($end-small) {
             margin-bottom: 0;
         }
-        h3 {
-            opacity: 0;
-            position: absolute;
-            top: 38%;
-            left: 0;
-            width: 100%;
+
+        &__headline {
+          position: absolute;
+          background: rgba(0,26,60,.8);
+          width: 100%;
+          padding: 10px 0;
+
+          h3 {
             color: #fff;
+            font-family: "palatino";
+            text-align: center;
+            line-height: 1;
+            margin: 0 0 5px;
+            font-weight: 100;
+          }
+
+          cite {
+            color: #fff;
+            font-size: 11px;
             display: block;
             text-align: center;
-            font-size: 16px;
-            span, strong {
-                display: block;
-                line-height: 1em;
-            }
-            span {
-                font-size: 14px;
-                font-weight: normal;
-                margin-top: 3px;
-            }
+            font-style: normal;
+          }
+
+
         }
+
         &:before {
             content: " ";
             display: block;
@@ -1582,91 +1697,169 @@ About Section
                 opacity: .5;
             }
         }
+
+        &__button {
+          display: block;
+          width: 100%;
+          background: #001a3c;
+          border: none;
+          color: #fff;
+          font-size: 11px;
+          text-transform: uppercase;
+          text-align: left;
+          padding: 10px;
+          font-weight: 600;
+          position: relative;
+
+          &:after {
+            content: " ";
+            background: url('../v2_0/img/white-arrow.png');
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            float: right;
+            position: absolute;
+            right: 10px;
+            bottom: 7px;
+            border: 1px solid #e2b13d;
+            border-radius: 4px;
+          }
+        }
     }
+
+    .story-popup {
+      position: absolute;
+      background: #0067b1;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 20px 10px;
+      color: #fff;
+      display: none;
+
+      h3 {
+        font-size: 20px;
+        color: #fff;
+        font-family: "palatino";
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 2px;
+      }
+
+      cite {
+        font-size: 14px;
+        font-style: normal;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      button {
+        position: absolute;
+        right: 7px;
+        top: 5px;
+        font-size: 0;
+        background: none;
+        border: none;
+
+        &:after {
+          content: "\00D7";
+          font-size: 40px;
+          line-height: 1;
+        }
+      }
+    }
+
+
     .jeff .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-jeff.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/jeffv_2.jpg');
     }
     .michael .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meetmichael.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/michaelv_2.jpg');
     }
     .koreen .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/square-koreen.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/koreenv_2.jpg');
     }
     .diane .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-diane.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/diannev_2.jpg');
     }
 
     .jessica .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-jessica.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/jessicav_2.jpg');
     }
     .carol .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-carol.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/carolv_2.jpg');
     }
     .jancita .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-jancita.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/jacintav_2.jpg');
     }
     .john .photo-square {
-        background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/meet-john.jpg');
+        background-image: url('//tbcdn.talentbrew.com/company/451/v2_0/img/johnv_2.jpg');
     }
 
-    .entry-text {
-        background-color: #0090ac;
-        padding: 16px;
-        margin: 0 0 19px 0;
-        position: relative;
-        @include breakpoint($end-small) {
-            position: absolute;
-            margin: 19px 0;
-            left: 25px;
-            padding: 16px 28px;
-            width: calc(100% - 50px);
-            z-index: 5;
-            &.extra-space {
-                margin: 250px 0 !important;
-            }
-        }
-        h4, p {
-            color: #fff;
-        }
-        h4 {
-            font-size: 20px;
-            padding-right: 30px;
-            display: block;
-            strong, span {
-                display: block;
-                line-height: 1em;
-            }
-            span {
-                font-size: 14px;
-                font-weight: normal;
-                margin-top: 4px;
-            }
-        }
-        p {
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
-        .close {
-            width: 22px;
-            text-indent: -9999px;
-            height: 22px;
-            display: block;
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            border: 0;
-            background-color: transparent;
-            -webkit-appearance: none;
-            background-size: 100% 100%;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/x-button.png');
-            @include breakpoint($end-small) {
-                top: 17px;
-                right: 19px;
-            }
-        }
-    }
+
+
+    // .entry-text {
+    //     background-color: #0090ac;
+    //     padding: 16px;
+    //     margin: 0 0 19px 0;
+    //     position: relative;
+    //     @include breakpoint($end-small) {
+    //         position: absolute;
+    //         margin: 19px 0;
+    //         left: 25px;
+    //         padding: 16px 28px;
+    //         width: calc(100% - 50px);
+    //         z-index: 5;
+    //         &.extra-space {
+    //             margin: 250px 0 !important;
+    //         }
+    //     }
+    //     h4, p {
+    //         color: #fff;
+    //     }
+    //     h4 {
+    //         font-size: 20px;
+    //         padding-right: 30px;
+    //         display: block;
+    //         strong, span {
+    //             display: block;
+    //             line-height: 1em;
+    //         }
+    //         span {
+    //             font-size: 14px;
+    //             font-weight: normal;
+    //             margin-top: 4px;
+    //         }
+    //     }
+    //     p {
+    //         font-size: 14px;
+    //         margin-bottom: 6px;
+    //     }
+    //     .close {
+    //         width: 22px;
+    //         text-indent: -9999px;
+    //         height: 22px;
+    //         display: block;
+    //         position: absolute;
+    //         top: 6px;
+    //         right: 6px;
+    //         border: 0;
+    //         background-color: transparent;
+    //         -webkit-appearance: none;
+    //         background-size: 100% 100%;
+    //         background-position: center center;
+    //         background-repeat: no-repeat;
+    //         background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/x-button.png');
+    //         @include breakpoint($end-small) {
+    //             top: 17px;
+    //             right: 19px;
+    //         }
+    //     }
+    // }
 }
 
 /* =================================================================
@@ -1772,66 +1965,131 @@ Social Media
 } // End Social Media Styles
 
 
+/* =================================================================
+social share - need to update icon references to match shared resources
+================================================================= */
+.social-share {
+    background-color: $lt-gray;
+    padding: 15px ;
+    margin: 0 0 36px;
+    @include breakpoint($end-small) {
+      margin: 0 0 42px;
+    }
+
+    h3 {
+        margin: 0 0 10px;
+        line-height: 1.2;
+        @include font-size(24px);
+        color: $primary;
+        font-weight: 600;
+    }
+
+	ul {
+		list-style: none;
+		margin: 0;
+		text-align: center;
+	}
+
+	li:not(.expandable) {
+		display: inline-block;
+	}
+
+	.expandable ul {
+		.js & {
+			display: none;
+		}
+	}
+
+	a {
+        &:not(.share-more) {
+            display: block;
+            height: 32px;
+            overflow: hidden;
+            text-align: left;
+            text-indent: -9999em;
+            width: 32px;
+            background-image: url("../v2_0/img/social-sharev_2.png");
+            background-repeat: no-repeat;
+            margin: 0 5px;
+
+      		&:hover, &:focus {
+      			box-shadow: 1px 1px 2px 0 rgba(0,0,0,.5);
+      		}
+        }
+
+        // &.apnacircle{ background-position: 0 0 }
+        &.email{ background-position: -150px 0 }
+        &.facebook{ background-position: 0 0 }
+        // &.googleplus{ background-position:-96px 0 }
+        &.linkedin{ background-position: -100px 0 }
+        // &.pinterest{background-position:-160px 0}
+        // &.tumblr{ background-position:-192px 0 }
+        &.twitter{ background-position: -50px 0 }
+        // &.viadeo{ background-position:-256px 0 }
+        // &.xing{ background-position:-288px 0 }
+        // &.youtube{ background-position:-320px 0 }
+        // &.renren{ background:url("../../shared/img/social/renren.png") no-repeat }
+        // &.weibo{ background:url("../../shared/img/social/weibo.png") no-repeat }
+	}
+
+    #social-share-fields {
+        p {
+            label {
+                display: block;
+            }
+        }
+    }
+}
+
+/* =================================================================
+Page End Modules
+================================================================= */
+
+.page-end-modules {
+  background: #e4e4e4;
+  padding: 20px 10px;
+  @include breakpoint($end-small) {
+    padding: 60px 10px;
+    margin-bottom: 40px;
+  }
 
 
+  &__wrap {
+
+    @include breakpoint($end-small) {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  }
+}
 
 
 /* =================================================================
 Facebook Plugin Module
 ================================================================= */
 
-.fb-outer-wrapper {
 
-    padding: 15px 0;
-    margin: 15px auto;
-    width: 100%;
-
-    @include breakpoint($end-small) {
-       /* max-width: 300px;
-        margin: 0;
-        display: inline-block;
-        width: 100%;*/
-    }
-
-    iframe {
-        margin: 0 auto;
-        display: block;
-        width: 100%;
-        min-height: 330px;
-    }
     .fb_iframe_widget {
         width: 100%;
-        > span {
 
-        }
     }
-}
 
-.homepage-halved {
-    @include breakpoint($end-small) {
-        padding: 0 20px;
+    .fb-wrap{
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      -webkit-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+      @include breakpoint($end-small) {
+        margin: 0;
+      }
     }
-     @include breakpoint($most-max-width) {
-         padding: 0;
-     }
-    .data-form  {
-        @include breakpoint(1100px) {
-            float: right;
-            min-height: 540px;
-            width: calc(50%);
-            margin-top: 0;
-        }
-    }
-    .fb-outer-wrapper {
-         @include breakpoint(1100px) {
-            float: left;
-            width: 50%;
-            min-height: 345px;
-            padding: 0;
-            margin: 0;
-        }
-    }
-}
+
+
+
 
 /* =================================================================
 Meet The Team
@@ -2068,21 +2326,17 @@ Job Alerts
 ================================================================= */
 
 .data-form {
-    background-color: $lt-gray;
-    //box-shadow: $outer-glow;
-    padding: 15px ;
-    margin-top: 40px;
+    padding: 0 10px;
+    max-width: 1100px;
+    margin: 40px auto;
+    clear: both;
 
-    @include breakpoint($end-small) {
-        #home &,
-        #career-areas &,
-        #working & {
-        }
-    }
 
     .form-display-heading {
-        margin: 0 0 10px;
+        margin: 0 0 30px;
         line-height: 1.2;
+        font-family: "palatino";
+        font-size: 30px;
     }
 
     .form-instructions {
@@ -2112,13 +2366,16 @@ Job Alerts
 
 
         label {
-            @include font-size(12px);
-            font-weight: 700;
+            @include font-size(16px);
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #2f2f2f;
         }
 
         legend {
            font-size: 14px;
            font-weight: bold;
+           color: #2f2f2f;
         }
 
         .instruction-text {
@@ -2129,12 +2386,15 @@ Job Alerts
 
         input:not([type="submit"]):not([type="file"]),
         select {
-            border: 0;
-            min-height: 28px;
-            border-radius: 5px;
+            border: 1px solid #d2d2d2;
+            height: 38px;
+            border-radius: 2px;
             width: 100%;
-            box-shadow: $outer-glow, $inner-shadow;
-            @include font-size(12px);
+            background: #f8f8f8;
+            @include font-size(16px);
+            font-style: italic;
+            font-weight: 400;
+            padding-left: 10px;
         }
 
         select {
@@ -2156,13 +2416,15 @@ Job Alerts
         }
 
         .keyword-add {
-            @include button($primary, 16px);
+            @include button(#6b6d6f, 16px);
             display: inline-block;
-            width: 61px;
+            border-radius: 3px;
+            width: 115px;
             text-align: center;
             padding: 7px 0;
             float: right;
             margin-top: 13px;
+            font-weight: 100;
 
             &[disabled] {
                 background-color: gray;
@@ -2171,10 +2433,14 @@ Job Alerts
         }
 
         input[type="submit"] {
-            @include button($primary, 16px);
+            @include button($primary, 14px);
+            text-transform: uppercase;
+            font-weight: 100;
+            width: 130px;
+            border-radius: 3px;
         }
 
-    #home &, #working &, #career-areas & {
+
         p.form-field {
             &:nth-of-type(2) {
                 @include breakpoint($end-small) {
@@ -2204,7 +2470,7 @@ Job Alerts
                 }
             }
         }
-    }
+
 
 }
 
@@ -2212,20 +2478,20 @@ Job Alerts
 Recent Jobs & Recently Viewed Jobs
 ================================================================= */
 
-.recent.job-list,
-.recently-viewed-job-list > div {
-    background-color: $lt-gray;
-    padding: 15px ;
+.recent.job-list  {
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    padding: 15px 10px;
     margin: 20px 0 10px;
 
     @include breakpoint($end-small) {
-
-        #home & {
-            min-height: 273px;
-            width: 48%;
-            float: right;
-            margin-top: 0;
-        }
+      margin: 0 0 0 20px;
+      max-width: 500px;
+    }
+    @include breakpoint(1200px) {
+      padding: 20px;
     }
 
     &:empty {
@@ -2233,13 +2499,19 @@ Recent Jobs & Recently Viewed Jobs
     }
 
     h3 {
+        font-family: "palatino";
         margin: 0 0 10px;
         line-height: 1.2;
-        @include font-size(18px);
+        @include font-size(30px);
+    }
+
+    a {
+      font-weight: 600;
+      display: block;
     }
 
     ul {
-        padding-left: 1.5em;
+        padding-left: 20px;
         list-style-type: disc;
     }
 
@@ -2250,7 +2522,50 @@ Recent Jobs & Recently Viewed Jobs
 
     .date,
     .location {
-        display: block;
+        display: inline-block;
+    }
+}
+
+.recently-viewed-job-list > div {
+    background-color: #fff;
+    padding: 15px 10px;
+    margin: 20px 0 10px;
+
+    @include breakpoint($end-small) {
+      margin: 0;
+      width: 50%;
+
+    }
+
+    &:empty {
+        display: none;
+    }
+
+    h3 {
+        font-family: "palatino";
+        margin: 0 0 10px;
+        line-height: 1.2;
+        @include font-size(30px);
+    }
+
+    a {
+      font-weight: 600;
+      display: block;
+    }
+
+    ul {
+        padding-left: 20px;
+        list-style-type: disc;
+    }
+
+    li {
+        margin: 12px 0;
+        @include font-size(14px);
+    }
+
+    .date,
+    .location {
+        display: inline-block;
     }
 }
 
@@ -2263,7 +2578,7 @@ section.map-link {
     padding-right: 120px;
     background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/map-icon.png');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: right center;
     background-size: auto;
     @include breakpoint($end-small) {
         background-position: right center;
@@ -2273,12 +2588,15 @@ section.map-link {
         line-height: 1.2;
         font-size: 24px;
         text-align: left;
+        color: $primary;
+        font-weight: 600;
     }
 
     p {
         margin: 2px 0 9px 0;
         text-align: left;
-        font-size: 14px;
+        font-size: 13px;
+        font-family: Arial;
     }
 
     img {
@@ -2288,6 +2606,7 @@ section.map-link {
 
     .map-button {
         @include button($primary, 16px);
+        font-weight: 600;
     }
 
 }
@@ -2295,19 +2614,94 @@ section.map-link {
 /* =================================================================
 Related Content Module
 ================================================================= */
+
 .related-content {
+    padding: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    .related-content-link-wrap {
+        width: 100%;
+        padding: 10px 0 15px;
+        background: #001a3c;
+        position: relative;
+    }
+
     .related-content-img-wrap {
         float: none;
         margin: 0;
         width: 100%;
+        position: relative;
+    }
+
+    ul {
+
+        @include breakpoint($end-small) {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+    		@include flex-property(justify-content, space-between);
+        }
     }
 
     li {
+        padding: 10px 10px 0;
         margin: 10px 0;
+        background: #001a3c;
+        // border: 10px solid #001a3c;
+
+        @include breakpoint($end-small) {
+            // max-width: 300px;
+        }
+    }
+
+    h3 {
+        @include font-size(23px);
+        font-family: "palatino";
+        color: #fff;
+        line-height: 25px;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        width: 100%;
+        top: 8%;
     }
 
     p {
-        margin: 0 0 10px;
+        @include font-size(13px);
+        color: #fff;
+        line-height: 14px;
+        text-align: center;
+        margin: 0;
+        width: 100%;
+        padding: 0 10px;
+        position: absolute;
+        bottom: 20%;
+    }
+
+    .mock-link {
+        @include font-size(13px);
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #fff;
+
+        &:after {
+          content: " ";
+          background: url(../v2_0/img/white-arrow.png);
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          background-repeat: no-repeat;
+          background-position: center;
+          float: right;
+          position: absolute;
+          right: 0;
+          bottom: 12px;
+          border: 1px solid #e2b13d;
+          border-radius: 4px;
+        }
     }
 }
 
@@ -2316,7 +2710,7 @@ search form
 ================================================================= */
 .search-inner-wrapper {
     text-align: center;
-    padding: 0 10px 10px 10px;
+    padding: 20px 10px;
     @include breakpoint($end-small) {
 	    text-align: left;
         display: block;
@@ -2331,7 +2725,7 @@ search form
 	clear: both;
 	.search-header {
         font-size: 17px;
-        margin: 0;
+        margin: 0 0 3px;
         line-height: 1.3;
         font-weight: normal;
         text-align: left;
@@ -2346,9 +2740,8 @@ search form
 	p {
 		margin: 0 0 15px;
 		@include breakpoint($end-small) {
-// 			width: 28%;
-            margin: 0 15px 0;
-            flex: 1;
+      margin: 0 15px 0;
+      flex: 1;
 		}
 	}
 
@@ -2392,14 +2785,14 @@ search form
 
 	.search-form-fields {
 		.js & {
-		   // display: block;
-      display: none;
+		   display: block;
+
 			@include breakpoint($end-small) {
 				display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
 				@include flex-property(flex-flow, row wrap);
 				@include flex-property(justify-content, space-between);
 				@include flex-property(align-items, flex-end);
@@ -2449,8 +2842,12 @@ search form
 	}
 
 	button {
-	    @include button(#01335d, 14px);
+	    @include button(#002d59, 14px);
 	     height: 40px;
+       text-transform: uppercase;
+       font-weight: 500;
+       font-size: 14px;
+       width: 115px;
 	}
 }
 
@@ -2548,16 +2945,25 @@ advanced search form
 search results, and Job Matching - result list
 ================================================================= */
 
-#search main {
-    padding: 11px;
-    @include breakpoint($end-small) {
-        max-width: $most-max-width;
-        margin: 0 auto;
-        padding: 55px 11px;
-    }
-      @include breakpoint($most-max-width) {
-        padding: 55px 0;
-      }
+// #search main {
+//     padding: 11px;
+//     @include breakpoint($end-small) {
+//         max-width: $most-max-width;
+//         margin: 0 auto;
+//         padding: 55px 11px;
+//     }
+//       @include breakpoint($most-max-width) {
+//         padding: 55px 0;
+//       }
+// }
+
+.search-wrap {
+  padding: 0 10px;
+  max-width: 1240px;
+  margin: 0 auto;
+  @include breakpoint($end-small) {
+    margin: 40px auto 0;
+  }
 }
 
 
@@ -2615,14 +3021,19 @@ search results, and Job Matching - result list
     outline: none;
 
     @include breakpoint($end-small) {
-        // padding: 0 20px;
         @include clearfix;
-    }
+        float: left;
+        width: 72%;
+      }
+      @include breakpoint(1280px) {
+          padding-left: 0;
+      }
 
     h2 {
-        @include font-size(24px);
-        margin: 0 0 20px;
-
+        @include font-size(30px);
+        margin: 0;
+        color: $primary;
+        font-family: "palatino";
 
     }
 }
@@ -2632,39 +3043,26 @@ text-transform: none;
 }
 #job-matching-results h2 {
 margin: 10px 0px;
+font-family: "palatino";
 }
 #filter-slideout-toggle {
-    @include button($link-color, 16px);
+    @include button(#002d59, 26px);
     display: block;
     width: 100%;
-    margin: 15px 0
-    // width: 100%;
-    // position: relative;
-    // padding: 10px 20px;
-    // background: #000;
-    // border: 0;
-    // border-radius: 5px;
-    // font-size: 1.2em;
-    // font-weight: bold;
-    // color: #fff;
-    // text-transform: uppercase;
-    // text-align: center;
-
-    // &:hover, &:focus {
-    //     opacity: 0.8;
-    //     transition: all 0.2s linear;
-    // }
+    margin: 15px 0;
+    font-weight: 600;
 }
 
 #search-results-list, #job-matching-results {
     @include font-size(16px);
 
     h2 {
-    line-height: 1.4;
-    @include font-size(16px);
-    margin: 0;
+    line-height: 1.3;
+    @include font-size(20px);
+
     color: $primary;
     font-weight: 600;
+
     }
 
     > ul {
@@ -2701,6 +3099,10 @@ margin: 10px 0px;
     .job-location {
         max-height: 70px;
         overflow: hidden;
+        @include font-size(14px);
+    }
+    .job-date-posted {
+      @include font-size(14px);
     }
 }
 
@@ -2735,6 +3137,7 @@ margin: 10px 0px;
 
     h2#applied-filters-label {
         @include font-size(12px);
+        margin-bottom: 2px;
         color: #4a4745;
         font-weight: 600;
     }
@@ -2776,6 +3179,21 @@ margin: 10px 0px;
 /* job matching specific */
 #job-match {
 
+
+
+  .inner-wrapper {
+    padding: 0 10px;
+    @include breakpoint($end-small) {
+      padding: 40px 10px 0;
+      @include clearfix;
+    }
+
+    > h2 {
+      font-family: "palatino";
+      font-size: 30px;
+    }
+  }
+
     #job-matching-logout {
         position: relative;
         background-color: #efebe3;
@@ -2796,9 +3214,10 @@ margin: 10px 0px;
         h2 {
          //   @include font-size(18px);
              font-size: 1.025rem;
-                width: 73%;
-                margin: 10px 0px 10px 12px;
-            display: inline-block;
+              width: 73%;
+              margin: 10px 0px 10px 12px;
+             display: inline-block;
+
         }
 
         a {
@@ -2882,7 +3301,10 @@ margin: 10px 0px;
 
         .expandable-parent {
             a {
+                font-size: 16px;
                 color: #fff;
+                font-weight: 400;
+                text-transform: capitalize;
             }
         }
     }
@@ -2924,6 +3346,9 @@ margin: 10px 0px;
     }
 }
 
+
+
+
 #search-filters section.expandable {
     padding-top: 10px;
     background-color: #f1f1f1;
@@ -2959,8 +3384,13 @@ margin: 10px 0px;
 search results - pagination
 ================================================================= */
 #pagination-bottom {
-    margin-top: 10px;
+    margin: 10px 0 0;
+    text-align: center;
     @include clearfix
+    @include breakpoint($end-small) {
+      margin: 40px 0 60px;
+      text-align: left;
+    }
 }
 .pagination-buttons{
     @include breakpoint($end-small) {
@@ -2970,6 +3400,7 @@ search results - pagination
 }
 .pagination-page-count {
     display: inline-block;
+    font-size: 14px;
 
     @include breakpoint($end-small) {
         display: inline-block;
@@ -2988,8 +3419,12 @@ search results - pagination
     }
 
     .pagination-page-jump {
-        @include button($primary, 16px);
+        @include button($primary, 14px);
         margin-left: 10px;
+        font-weight: 400;
+        text-transform: uppercase;
+        width: 125px;
+        border-radius: 2px;
     }
 }
 
@@ -3003,9 +3438,12 @@ search results - pagination
     }
 
     a {
-        @include button($primary, 16px);
-        width: 104px;
-
+        @include button($primary, 14px);
+        width: 125px;
+        margin: 0 10px;
+        font-weight: 400;
+        text-transform: uppercase;
+        border-radius: 2px;
         &.disabled {
             background-color: gray;
             cursor: default;
@@ -3063,12 +3501,13 @@ search results - search filters
         line-height: 1.3;
 
         @include breakpoint($end-small) {
-            background-color: $primary;
+            background: #002d59;
             color: #fff;
             text-align: center;
             margin: 0;
             padding: 7px;
             @include font-size(22px);
+
         }
 	}
 
@@ -3200,7 +3639,11 @@ search results - search filters
 	}
 
 	input {
-	    @include button($primary, 16px);
+	    @include button(#002d59, 14px);
+      font-weight: 400;
+      text-transform: uppercase;
+      width: 125px;
+      border-radius: 2px;
 	}
 }
 
@@ -3238,11 +3681,21 @@ job details - style overrides for ATS description
 ================================================================= */
 .job-info {
 	display: block;
+  color: #4a4745;
 	b {
 		&:after {
 			content: ":";
 		}
 	}
+}
+
+.job-wrap {
+  padding: 0 10px;
+  max-width: 1240px;
+  margin: 0 auto;
+  @include breakpoint($end-small) {
+    margin: 40px auto 0;
+  }
 }
 
 .ats-description {
@@ -3257,8 +3710,8 @@ job details - style overrides for ATS description
     margin-bottom: 1em !important;
     }
 	* {
-		color: #000 !important;
-		font: inherit 1rem Arial, Helvetica, sans-serif !important;
+		color: #4a4745!important;
+		font: inherit 1rem $base-font-family, Helvetica, sans-serif !important;
 		line-height: 1.4em !important;
 		&:not(br):empty {
 			display: none;
@@ -3269,7 +3722,7 @@ job details - style overrides for ATS description
 		margin: 0 0 .5em 0;
 	}
 	p, div, span, font {
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: $base-font-family;
 		font-size: 1em !important;
 		margin-left: 0 !important;
 		margin-right: 0 !important;
@@ -3294,33 +3747,43 @@ job details - style overrides for ATS description
 .job-apply {
 	clear: both;
 	display: inline-block;
-	font-size: 1.1em;
 	margin: 1em 0;
-	padding: 5px 10px;
-	@include button($primary, 16px);
+	padding: 11px 10px !important;
+  border-radius: 3px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  width: 48%;
+	@include button($primary, 14px);
+
+  &:first-of-type {
+    margin-right: 10px;
+  }
 
 	@include breakpoint($mid_small) {
 		line-height: 1.4em;
 		min-width: 6em;
-		&.top {
-			margin: 0 0 10px;
-		}
+    width: 160px;
 	}
 }
 
 .job-description {
     margin-bottom: 20px;
+    @include breakpoint($end-small) {
+      float: left;
+      width: 72%;
+      margin-bottom: 50px;
+    }
+
     .apply-links {
         margin: 15px 0 25px 0;
         @include breakpoint($mid-small) {
         }
     }
     h2 {
-        font-size: 18px;
-        @include breakpoint($mid-small) {
-            font-size: 24px;
-        }
-
+        font-size: 30px;
+        font-family: "palatino";
+        color: $primary;
+        line-height: 1.2;
     }
 
     #save-job {
@@ -3362,7 +3825,16 @@ Job Location Page
             padding: 0;
         }
     }
+
+    .job-apply {
+      margin-bottom: 20px;
+    }
+
     .job-map {
+      @include breakpoint($end-small) {
+        float: left;
+        width: 72%;
+      }
 
         .star-content {
             width: 100%;
@@ -3372,8 +3844,10 @@ Job Location Page
             }
         }
         h2 {
-            @include font-size(18px);
+            @include font-size(30px);
+            font-family: "palatino";
             line-height: 1.2;
+
         }
 
         .job-map-canvas {
@@ -3491,402 +3965,547 @@ Job Location Page
         }
 }
 
+
 /* =================================================================
-social share - need to update icon references to match shared resources
+Secondary Pages
 ================================================================= */
-.social-share {
-    background-color: $lt-gray;
-    padding: 15px ;
-    margin: 0 0 15px;
 
-    h3 {
-        margin: 0 0 10px;
-        line-height: 1.2;
-        @include font-size(18px);
+
+#error, #sitemap {
+
+  .inner-wrapper {
+    padding: 0 10px;
+    max-width: 1260px;
+    @include breakpoint($end-small) {
+      padding: 40px 10px;
     }
-
-	ul {
-		list-style: none;
-		margin: 0;
-		text-align: center;
-	}
-
-	li:not(.expandable) {
-		display: inline-block;
-	}
-
-	.expandable ul {
-		.js & {
-			display: none;
-		}
-	}
-
-	a {
-        &:not(.share-more) {
-            display: block;
-            height: 32px;
-            overflow: hidden;
-            text-align: left;
-            text-indent: -9999em;
-            width: 32px;
-            background-image: url("../v1_0/img/social-share.png");
-            background-repeat: no-repeat;
-            margin: 0 5px;
-
-      		&:hover, &:focus {
-      			box-shadow: 1px 1px 2px 0 rgba(0,0,0,.5);
-      		}
-        }
-
-        // &.apnacircle{ background-position: 0 0 }
-        &.email{ background-position: -150px 0 }
-        &.facebook{ background-position: 0 0 }
-        // &.googleplus{ background-position:-96px 0 }
-        &.linkedin{ background-position: -100px 0 }
-        // &.pinterest{background-position:-160px 0}
-        // &.tumblr{ background-position:-192px 0 }
-        &.twitter{ background-position: -50px 0 }
-        // &.viadeo{ background-position:-256px 0 }
-        // &.xing{ background-position:-288px 0 }
-        // &.youtube{ background-position:-320px 0 }
-        // &.renren{ background:url("../../shared/img/social/renren.png") no-repeat }
-        // &.weibo{ background:url("../../shared/img/social/weibo.png") no-repeat }
-	}
-
-    #social-share-fields {
-        p {
-            label {
-                display: block;
-            }
-        }
+    h1 {
+      font-size: 30px;
+      font-family: "palatino";
     }
+  }
 }
+
+// Site Map
+#sitemap {
+  .job-location ul, .job-category ul, .job-keyword ul {
+    list-style: none;
+    margin: 0 0 20px 0;
+
+		li {
+			display: inline-block;
+			width: 100%;
+		}
+
+    @include breakpoint($mid-small) { // could use mid-small
+      -webkit-column-count: 2;/* Chrome, Safari, Opera */
+      -moz-column-count: 2;/* Firefox */
+      column-count: 2;
+    }
+
+    @include breakpoint($end-small) { // could use end-mall
+      -webkit-column-count: 3;/* Chrome, Safari, Opera */
+      -moz-column-count: 3;/* Firefox */
+      column-count: 3;
+    }
+  }
+
+  .job-location, .job-category, .job-keyword {
+
+    h2 {
+      font-family: "palatino";
+    }
+  }
+
+} // end sitemap page
+
+
 
 /* =================================================================
 CP - Career Areas
 ================================================================= */
 
-.cultivate {
-    h2 {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-}
-
-.working-content {
-    position: relative;
-    margin: 0 auto;
-        height: auto;
-    display: block;
-    @include clearfix;
-
-    @include breakpoint($end-small) {
-        max-width: none;
-        transition: 0.6s ease-in-out;
-    }
-    p{
-        font-size: 1rem;
-        line-height: 1.8em;
-    }
-    ul {
-        @include breakpoint($end-small) {
-            float: right;
-        }
-    }
-
-    li {
-        margin: 0 0 12px;
-
-        ul li, ol li {
-            font-size: 1rem;
-            line-height: 1.8em;
-        }
-    }
-
-    a.link {
-        background-color: $lt-gray;
-        padding: 0 5px;
-        display: block;
-        text-align: center;
-        font-weight: bold;
-        color: $primary;
-        transition: background-color .6s ease;
-        font-size: 16px;
-        line-height: 36px;
-        position: relative;
-        display: block;
-        z-index: 9999;
-        @include breakpoint($end-small) {
-            width: 300px;
-        }
-        &:hover {
-            background-color: darken($lt-gray, 9%);
-        }
-
-        &:after {
-            content: '';
-            display: inline-block;
-            width: 40px;
-            height: 30px;
-            background-image: url('//tbcdn.talentbrew.com/company/451/v1_0/img/CA-icons.png');
-            vertical-align: middle;
-            background-position: 0 0;
-            margin-top: -4px;
-            margin-left: 5px;
-        }
-
-        &.behavioral:after {
-            background-position: 0 -31px;
-        }
-
-        &.food:after {
-            background-position: 0 -61px;
-        }
-
-        &.labs:after {
-            background-position: 0 -92px;
-        }
-
-        &.nurse:after {
-            background-position: 0 -124px;
-        }
-
-        &.pharmacy:after {
-            background-position: 0 -154px;
-        }
-
-        &.speech:after {
-            background-position: 0 -185px;
-        }
-
-        &.rad:after {
-            background-position: 0 -218px;
-        }
-
-        &.support:after {
-            background-position: 0 -248px;
-        }
-
-        &.medical:after {
-            background-position: 0 -277px;
-        }
-
-        &.insurance:after {
-            background-position: 0 -309px;
-        }
-
-        &.beyond:after {
-            background-position: 0 -340px;
-        }
-
-        &.faqs:after {
-            background-position: 0 -370px;
-        }
-
-        &.active {
-            background-color: $primary;
-            color: #fff;
-
-            &:after {
-                background-position-x: -38px;
-            }
-        }
-    }
-
-    div {
-        padding: 0;
-        background-color: white;
-        max-height: 0;
-        //overflow: hidden;
-        opacity: 0;
-        height: 100%;
-        @include font-size(12px);
-
-        @include breakpoint($end-small) {
-            position: absolute;
-            top: 0;
-            bottom: 11px; // 0;
-            left: 0;
-            width: calc(100% - 320px);
-            transition: 0.6s ease-in-out;
-            transition-property: opacity;
-        }
-
-        &.show {
-            opacity: 1;
-            max-height: 6000px;
-            z-index: 999999999999;
-            height: 100%;
-            //overflow-y: auto;
-        }
-
-        h3 {
-            font-size: 22px;
-            word-break: break-word;
-        }
-        h4 {
-            font-size: 20px;
-        }
-        .career-link {
-            font-weight: bold;
-            text-decoration: underline;
-            font-size: 1rem;
-            line-height: 1.8em;
-                z-index: 999999;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-    }
-}
-
-.team, .benefits.inner-wrapper, .cultivate.inner-wrapper {
-    @include breakpoint($end-small) {
-        padding: 0 20px;
-    }
-    @include breakpoint($most-max-width) {
-        padding: 0;
-    }
-}
-
-.cultivate.inner-wrapper {
-    @include breakpoint($end-small) {
-        margin-top: 46px;
-    }
-    h2 {
-        font-size: 18px;
-        line-height: 1.4em;
-        margin-top: 10px;
-        @include breakpoint($end-small) {
-            font-size: 26px;
-            margin-top: 0;
-        }
-    }
-    > p {
-        font-size: 12px;
-        @include breakpoint($end-small) {
-            font-size: 14px;
-        }
-        &.strong {
-            font-size: 14px;
-            font-style: italic;
-            @include breakpoint($end-small) {
-                font-size: 22px;
-            }
-        }
-    }
-    .career-content {
-        margin-top: 25px;
-        @include breakpoint($end-small) {
-        }
-    }
-}
-.career-content .list{
-    float: none !important;
-
-    li {
-    text-indent: -6px;
-    }
-}
-
-.team.inner-wrapper {
-    padding-bottom: 15px;
-        height: auto;
-    display: block;
-    @include breakpoint($end-small){
-        //overflow-y: hidden;
-    }
-}
+// .cultivate {
+//     h2 {
+//         font-size: 18px;
+//     }
+//
+//     p {
+//         font-size: 14px;
+//     }
+// }
+//
+// .working-content {
+//     position: relative;
+//     margin: 0 auto;
+//         height: auto;
+//     display: block;
+//     @include clearfix;
+//
+//     @include breakpoint($end-small) {
+//         max-width: none;
+//         transition: 0.6s ease-in-out;
+//     }
+//     p{
+//         font-size: 1rem;
+//         line-height: 1.8em;
+//     }
+//     ul {
+//         @include breakpoint($end-small) {
+//             float: right;
+//         }
+//     }
+//
+//     li {
+//         margin: 0 0 12px;
+//
+//         ul li, ol li {
+//             font-size: 1rem;
+//             line-height: 1.8em;
+//         }
+//     }
+//
+//     a.link {
+//         background-color: $lt-gray;
+//         padding: 0 5px;
+//         display: block;
+//         text-align: center;
+//         font-weight: bold;
+//         color: $primary;
+//         transition: background-color .6s ease;
+//         font-size: 16px;
+//         line-height: 36px;
+//         position: relative;
+//         display: block;
+//         z-index: 9999;
+//         @include breakpoint($end-small) {
+//             width: 300px;
+//         }
+//         &:hover {
+//             background-color: darken($lt-gray, 9%);
+//         }
+//
+//         &:after {
+//             content: '';
+//             display: inline-block;
+//             width: 40px;
+//             height: 30px;
+//             background-image: url('//tbcdn.talentbrew.com/company/451/v1_0/img/CA-icons.png');
+//             vertical-align: middle;
+//             background-position: 0 0;
+//             margin-top: -4px;
+//             margin-left: 5px;
+//         }
+//
+//         &.behavioral:after {
+//             background-position: 0 -31px;
+//         }
+//
+//         &.food:after {
+//             background-position: 0 -61px;
+//         }
+//
+//         &.labs:after {
+//             background-position: 0 -92px;
+//         }
+//
+//         &.nurse:after {
+//             background-position: 0 -124px;
+//         }
+//
+//         &.pharmacy:after {
+//             background-position: 0 -154px;
+//         }
+//
+//         &.speech:after {
+//             background-position: 0 -185px;
+//         }
+//
+//         &.rad:after {
+//             background-position: 0 -218px;
+//         }
+//
+//         &.support:after {
+//             background-position: 0 -248px;
+//         }
+//
+//         &.medical:after {
+//             background-position: 0 -277px;
+//         }
+//
+//         &.insurance:after {
+//             background-position: 0 -309px;
+//         }
+//
+//         &.beyond:after {
+//             background-position: 0 -340px;
+//         }
+//
+//         &.faqs:after {
+//             background-position: 0 -370px;
+//         }
+//
+//         &.active {
+//             background-color: $primary;
+//             color: #fff;
+//
+//             &:after {
+//                 background-position-x: -38px;
+//             }
+//         }
+//     }
+//
+//     div {
+//         padding: 0;
+//         background-color: white;
+//         max-height: 0;
+//         //overflow: hidden;
+//         opacity: 0;
+//         height: 100%;
+//         @include font-size(12px);
+//
+//         @include breakpoint($end-small) {
+//             position: absolute;
+//             top: 0;
+//             bottom: 11px; // 0;
+//             left: 0;
+//             width: calc(100% - 320px);
+//             transition: 0.6s ease-in-out;
+//             transition-property: opacity;
+//         }
+//
+//         &.show {
+//             opacity: 1;
+//             max-height: 6000px;
+//             z-index: 999999999999;
+//             height: 100%;
+//             //overflow-y: auto;
+//         }
+//
+//         h3 {
+//             font-size: 22px;
+//             word-break: break-word;
+//         }
+//         h4 {
+//             font-size: 20px;
+//         }
+//         .career-link {
+//             font-weight: bold;
+//             text-decoration: underline;
+//             font-size: 1rem;
+//             line-height: 1.8em;
+//                 z-index: 999999;
+//             position: relative;
+//             display: flex;
+//             align-items: center;
+//         }
+//     }
+// }
+//
+// .team, .benefits.inner-wrapper, .cultivate.inner-wrapper {
+//     @include breakpoint($end-small) {
+//         padding: 0 20px;
+//     }
+//     @include breakpoint($most-max-width) {
+//         padding: 0;
+//     }
+// }
+//
+// .cultivate.inner-wrapper {
+//     @include breakpoint($end-small) {
+//         margin-top: 46px;
+//     }
+//     h2 {
+//         font-size: 18px;
+//         line-height: 1.4em;
+//         margin-top: 10px;
+//         @include breakpoint($end-small) {
+//             font-size: 26px;
+//             margin-top: 0;
+//         }
+//     }
+//     > p {
+//         font-size: 12px;
+//         @include breakpoint($end-small) {
+//             font-size: 14px;
+//         }
+//         &.strong {
+//             font-size: 14px;
+//             font-style: italic;
+//             @include breakpoint($end-small) {
+//                 font-size: 22px;
+//             }
+//         }
+//     }
+//     .career-content {
+//         margin-top: 25px;
+//         @include breakpoint($end-small) {
+//         }
+//     }
+// }
+// .career-content .list{
+//     float: none !important;
+//
+//     li {
+//     text-indent: -6px;
+//     }
+// }
+//
+// .team.inner-wrapper {
+//     padding-bottom: 15px;
+//         height: auto;
+//     display: block;
+//     @include breakpoint($end-small){
+//         //overflow-y: hidden;
+//     }
+// }
 /* =================================================================
 CP - Working At BWFH
 ================================================================= */
 
-#working {
-    .benefits {
-        p,
-        ul,
-        ol {
-            font-size: 14px !important;
-        }
+.content-intro {
+  padding: 0 10px;
 
-    }
-    #benefits{
-        ul li{
-            margin-left: 20px;
-            font-size: 1rem;
-            line-height: 1.8em;
-        }
-    }
-    p.fine-print {
-        font-size: 14px !important;
-        font-style: italic !important;
-    }
+  &__heading {
+    font-size: 30px;
+    font-family: "palatino";
+    color: $primary;
+    font-weight: 600;
+  }
+
+  &__text {
+    line-height: 1.3;
+  }
+
 }
 
-.working-content {
+.tab {
 
-    .faqs-wrapper {
-        opacity: 0;
-        max-height: 0;
-        position: relative;
-        transition: 0.6s ease-in-out;
-        overflow-y: hidden;
+  &__section {
+    background: #f1f1f1;
+    padding: 20px 10px;
+  }
 
-        ul {
-            float: none;
-        }
+  &__wrap {
 
-        .faq-link {
-            padding: 10px 20px;
-            display: block;
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 99;
-            &.general {
-                background-color: #358195;
-            }
+  }
 
-            &.job-search {
-                background-color: #005e79;
-            }
+  &__link-list {
+    margin-bottom: 35px;
+  }
 
-            &.process {
-                background-color: #013847;
-            }
+  &__link {
+    margin-bottom: 20px;
+    cursor: pointer;
 
-            &.screening {
-                background-color: #000;
-            }
 
-            &:after {
-                content: "+";
-                font-size: 1.4em;
-                margin-right: 0;
-                float: right;
-            }
-
-            &.active:after {
-                content: "\2013";
-                @include font-size(25.6px);
-                margin-top: 0;
-                position: relative;
-                right: 1px;
-            }
-        }
-
-        div {
-            position: relative;
-            width: 100%;
-            transition: 1.0s ease-in-out;
-        }
+    span {
+      color: $primary;
+      font-weight: 600;
     }
+
+    &.current {
+
+      span {
+        color: #2f2f2f;
+        border-bottom: 1px solid #2f2f2f;
+      }
+    }
+  }
+
 }
+
+.tab-content {
+  display: none;
+
+  &.current {
+    display: block;
+  }
+
+  &__heading {
+    font-size: 30px;
+    font-family: "palatino";
+    color: $primary;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &__intro {
+    line-height: 1.3;
+  }
+
+  &__list {
+
+  }
+
+  &__item {
+    margin-bottom: 20px;
+  }
+
+  &__item-heading {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0 0 5px;
+  }
+
+  &__item-text {
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .tab-content__acc-content {
+    display: none;
+    padding: 15px 10px 10px;
+    border: 1px solid;
+    border-width: 0 1px 1px;
+    margin-top: -5px;
+
+    &.general {
+      border-color: #002d59;
+    }
+    &.job-search {
+      border-color: #0047a1;
+    }
+    &.application-process {
+      border-color: #0067b1;
+    }
+    &.interviews {
+      border-color: #0089ce;
+    }
+  }
+
+  &__acc-button {
+     display: block;
+     width: 100%;
+     text-align: left;
+     border: none;
+     margin-bottom: 5px;
+     padding: 10px;
+     color: #fff;
+     font-weight: 600;
+
+     &.general {
+       background: #002d59;
+     }
+     &.job-search {
+       background: #0047a1;
+     }
+     &.application-process {
+       background: #0067b1;
+     }
+     &.interviews {
+       background: #0089ce;
+     }
+
+     &[aria-expanded="true"] {
+
+
+      + .tab-content__acc-content {
+
+        display: block;
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// #working {
+//     .benefits {
+//         p,
+//         ul,
+//         ol {
+//             font-size: 14px !important;
+//         }
+//
+//     }
+//     #benefits{
+//         ul li{
+//             margin-left: 20px;
+//             font-size: 1rem;
+//             line-height: 1.8em;
+//         }
+//     }
+//     p.fine-print {
+//         font-size: 14px !important;
+//         font-style: italic !important;
+//     }
+// }
+//
+// .working-content {
+//
+//     .faqs-wrapper {
+//         opacity: 0;
+//         max-height: 0;
+//         position: relative;
+//         transition: 0.6s ease-in-out;
+//         overflow-y: hidden;
+//
+//         ul {
+//             float: none;
+//         }
+//
+//         .faq-link {
+//             padding: 10px 20px;
+//             display: block;
+//             color: #fff;
+//             font-size: 16px;
+//             font-weight: bold;
+//             text-transform: uppercase;
+//             position: relative;
+//             z-index: 99;
+//             &.general {
+//                 background-color: #358195;
+//             }
+//
+//             &.job-search {
+//                 background-color: #005e79;
+//             }
+//
+//             &.process {
+//                 background-color: #013847;
+//             }
+//
+//             &.screening {
+//                 background-color: #000;
+//             }
+//
+//             &:after {
+//                 content: "+";
+//                 font-size: 1.4em;
+//                 margin-right: 0;
+//                 float: right;
+//             }
+//
+//             &.active:after {
+//                 content: "\2013";
+//                 @include font-size(25.6px);
+//                 margin-top: 0;
+//                 position: relative;
+//                 right: 1px;
+//             }
+//         }
+//
+//         div {
+//             position: relative;
+//             width: 100%;
+//             transition: 1.0s ease-in-out;
+//         }
+//     }
+// }
 
 /* =================================================================
 Footer
@@ -4008,6 +4627,7 @@ Footer
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 20px;
     @include breakpoint($end-small) {
       width: 62%;
       max-width: 800px;
@@ -4053,17 +4673,71 @@ Footer
 
 .footer-bottom {
   background: #002d5a;
-  padding: 0 10px;
+  padding: 0 10px 20px;
+  @include breakpoint($end-small) {
+    padding: 15px 10px;
+  }
+
+  &__wrap {
+
+    @include breakpoint($end-small) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+  }
 
   &__images {
-
+    @include clearfix;
+    @include breakpoint($end-small) {
+      max-width: 475px;
+      width: 40%;
+    }
     img {
       width: calc(50% - 16px);
       float: left;
       margin-right: 1rem;
       margin-bottom: 1rem;
+      @include breakpoint($end-small) {
+        margin-bottom: 0;
+      }
     }
   }
+
+  &__list {
+    text-align: center;
+    @include breakpoint($end-small) {
+      text-align: left;
+      width: 60%;
+      max-width: 700px;
+    }
+  }
+
+  &__item {
+    color: #fff;
+    margin-bottom: 8px;
+    @include breakpoint($end-small) {
+      display: inline-block;
+      font-size: 14px;
+
+      &:not(:first-child):not(:last-child) {
+
+        &:after {
+          content: "|";
+        }
+      }
+
+    }
+  }
+
+  &__link {
+    color: #fff;
+    font-weight: 600;
+  }
+
+
 }
 
 
@@ -4071,12 +4745,6 @@ Footer
 Job Alerts Management
 ================================================================= */
 
-
-.simple-main {
-
-
-
-}
 
 .alerts-manager-wrangler {
     padding: 20px;
@@ -4086,6 +4754,11 @@ Job Alerts Management
 	@include breakpoint(1280px) {
 	    padding: 20px 0;
 	}
+
+  h1 {
+    font-size: 30px;
+    font-family: "palatino";
+  }
 
 	h2 {
 	  font-size: 2em;
@@ -4119,6 +4792,7 @@ Job Alerts Management
             float: left;
             clear: both;
             @include button($primary, 16px);
+            font-weight: 400;
         }
     }
     #job-alert-unsubscribe {
@@ -4211,35 +4885,37 @@ Job Alerts Management
         }
     }
 }
-.fb_iframe_widget{
-    width:100%;
-    @include breakpoint(500px){
-    width: 50%;
-    }
-    iframe {
-        padding: 0;
-        @include breakpoint($end-small){
-           padding: 15px 15px 0px 15px;
-        }
-    }
-    span, .fb_iframe_widget_fluid span{
-        width:100%;
-        height: 540px !important;
-            margin: 0px auto !important;
-    display: block !important;
-        @include breakpoint(500px){
-            //padding: 20px 0;
-            //padding-left: calc(50% - 250px);
-            //padding-right: calc(50% - 250px);
-            background-color: #f1f1f1;
-                display: inline-block;
-            margin-top: 20px;
-            position: relative;
-            text-align: justify;
-            padding: 0px;
-        }
-    }
-}
+// .fb_iframe_widget{
+//     width:100%;
+//     @include breakpoint($end-small) {
+//       width: 50%;
+//     }
+//
+//     iframe {
+//         padding: 0;
+//         width: 100%;
+//         @include breakpoint($end-small){
+//            padding: 15px 15px 0px 15px;
+//         }
+//     }
+//     span, .fb_iframe_widget_fluid span{
+//         width:100%;
+//         height: 540px !important;
+//         margin: 0px auto !important;
+//         display: block !important;
+//         @include breakpoint(500px){
+//             //padding: 20px 0;
+//             //padding-left: calc(50% - 250px);
+//             //padding-right: calc(50% - 250px);
+//             background-color: #f1f1f1;
+//                 display: inline-block;
+//             margin-top: 20px;
+//             position: relative;
+//             text-align: justify;
+//             padding: 0px;
+//         }
+//     }
+// }
 .ats-description{
     .contentlinepanel{
         h2{
@@ -4445,61 +5121,7 @@ Job Alerts Management
 }
 
 
-.related-content {
-    padding: 15px;
-    max-width: 1100px;
-    margin: 0 auto;
-    // margin-top: 20px;
-    // background: #f1f1f1;
 
-    .related-content-link-wrap {
-        width: 100%;
-        padding: 0 15px;
-    }
-
-    ul {
-
-        @include breakpoint($end-small) {
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-    		@include flex-property(justify-content, space-between);
-        }
-    }
-
-    li {
-        padding: 8px;
-        background: #fff;
-
-        @include breakpoint($end-small) {
-            max-width: 300px;
-        }
-    }
-
-    h3 {
-        @include font-size(15px);
-        line-height: 18px;
-        text-align: center;
-        margin: 5px 0 10px;
-    }
-
-    p {
-        @include font-size(13px);
-        color: #565350;
-        line-height: 14px;
-        text-align: center;
-        margin: 0;
-    }
-
-    .mock-link {
-        @include font-size(13px);
-        font-weight: bold;
-        margin: 0 auto 20px;
-        display: table;
-    }
-}
 
 //Engagement Styles
 .story-content {

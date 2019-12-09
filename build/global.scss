@@ -289,43 +289,25 @@ summary {
  */
 
 main {
-
-	padding: 30px 0;
+	padding: 0 0 30px;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	width: 100%;
-	&:after {
-		clear: both;
-		content: "";
-		display: block;
-	}
+	// &:after {
+	// 	clear: both;
+	// 	content: "";
+	// 	display: block;
+	// }
 	@include breakpoint($end-small) {
 		overflow-x: visible;
 		position: relative;
 		width: 100%;
-		padding: 10px 0;
+		padding: 0 0 10px;
 		overflow-y: auto;
 	}
-	// #search &, #job &, #job-match &, #job-location &, #error & {
-	//     @include breakpoint($end-small) {
-  //           margin: 30px auto 0 auto;
-  //           max-width: $most-max-width;
-  //           padding: 0 20px;
-	//     }
-  //   	@include breakpoint(1280px) {
-  //   	    padding: 0;
-  //   	}
-	// 	> section {
-	// 		@include breakpoint($end-small) {
-	// 			float: left;
-	// 			width: 72%;
-	// 			padding-left: 20px;
-	// 		}
-	// 		@include breakpoint(1280px) {
-	// 		    padding-left: 0;
-	// 		}
-	// 	}
-	// }
+	#search &, #job & {
+    padding: 0 0 0;
+	}
 
 }
 
@@ -951,97 +933,6 @@ th {
   }
 }
 
-// .video-wrapper {
-//     position: relative;
-// 	@include vw-height(168px, 426px, $end-small);
-// 	width: 100%;
-// 	margin-bottom: 10px;
-//
-// 	@include breakpoint($end-small) {
-// 	    height: 211px;
-// 	    max-width: 375px;
-// 	    float: right;
-// 	}
-//
-//     iframe,
-//     object,
-//     embed {
-//         position: absolute;
-//         top: 0;
-//         left: 0;
-//         width: 100%;
-//         height: 100%;
-//     }
-// }
-//
-//
-// .video-content {
-// position: relative;
-//
-// 	@include breakpoint($end-small) {
-// 	max-width: 375px;
-// 	float: right;
-// 	width: 50%;
-// 	}
-// 	&.about-us {
-// 	    @include breakpoint($end-small) {
-// 	        max-width: 50%;
-// 	    }
-// 	}
-// }
-//
-// 		.vod {
-// 		display: block;
-// 		height: 0;
-// 		max-width: 100%;
-// 		overflow: hidden;
-// 		padding-bottom: 56.25%;
-// 		position: relative;
-//
-// 		  img, iframe {
-// 		  width: 100%;
-// 		  }
-//
-// 		  iframe {
-// 		  border: 0;
-// 		  height: 100%;
-// 		  left: 0;
-// 		  position: absolute;
-// 		  top: 0;
-// 		  z-index: 100;
-// 		  }
-//
-// 		  .vod-label {
-// 		  display: block;
-// 		  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-// 		  color: white;
-// 		  font: normal 17px/normal Arial,Helvetica,sans-serif;
-// 		  left: 0;
-// 		  margin: 0;
-// 		  overflow: hidden;
-// 		  padding: 1.5em 1em 2em;
-// 		  position: absolute;
-// 		  text-overflow: ellipsis;
-// 		  text-shadow: black 1px 1px;
-// 		  top: 0;
-// 		  white-space: nowrap;
-// 		  width: 100%;
-// 		  z-index: 2;
-// 		  }
-//
-// 		  &:before, &:after {
-// 		  content: "";
-// 		  left: 50%;
-// 		  position: absolute;
-// 		  top: 50%;
-// 		  transition: all 0.2s ease-in-out;
-// 		  }
-//
-//
-//
-// 		}
-
-
 
 
 /* =================================================================
@@ -1196,6 +1087,7 @@ border-bottom: 5px solid #0090ac;
 Banner
 ================================================================= */
 
+
 .banner-wrapper {
     position: relative;
     padding: 0;
@@ -1204,156 +1096,117 @@ Banner
     }
 
     .banner {
-        max-height: 327px;
-        height: 21.2vw;
-        background-image: url('../v1_1/img/banner-1-wide.jpg');
+        padding-top: 58%;
+        // background-image: url('../v2_0/img/banner-home1-sm.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: 0 0;
         width: 100%;
-        margin-top: -6px;
+        @include breakpoint($end-small) {
+          padding-top: 23%;
+        }
 
 
         #home & {
-            //background-image: url('../v1_0/img/banners/home-banner.jpg');
-            //background-position: -20% 0;
+
         }
 
          &#banner-01,
          &#banner-01_clone{
-        background-image: url('../v1_1/img/banner-1-wide.jpg');
-            .banner-content {
-                top: 30%;
-                @include breakpoint($end-small) {
-                    top: 32%;
-                }
-            }
+        background: url('../v2_0/img/banner-home1-sm.jpg') no-repeat;
+        background-size: cover;
+        @include breakpoint($end-small) {
+            background: url('../v2_0/img/banner-home1-lg.jpg') no-repeat;
+            background-size: cover;
+        }
+
         }
 
         &#banner-02 {
-        background-image: url('../v1_1/img/banner-2-wide.jpg');
-            .banner-content {
-                top: 20%;
-                @include breakpoint($end-small) {
-                    top: 32%;
-                }
-            }
+        background: url('../v2_0/img/banner-home2-sm.jpg') no-repeat;
+        background-size: cover;
+        @include breakpoint($end-small) {
+            background: url('../v2_0/img/banner-home2-lg.jpg') no-repeat;
+            background-size: cover;
+        }
+
         }
 
         &#banner-03 {
-        background-image: url('../v1_1/img/banner-3-wide.jpg');
-            .banner-content {
-                top: 20%;
-                @include breakpoint($end-small) {
-                    top: 27%;
-                }
-            }
+        background: url('../v2_0/img/banner-home3-sm.jpg') no-repeat;
+        background-size: cover;
+        @include breakpoint($end-small) {
+            background: url('../v2_0/img/banner-home3-lg.jpg') no-repeat;
+            background-size: cover;
+        }
+
         }
 
         &#banner-04 {
-        background-image: url('../v1_1/img/banner-4-wide.jpg');
-            .banner-content {
-                top: 30%;
-                @include breakpoint($end-small) {
-                    top: 32%;
-                }
-            }
+        background: url('../v2_0/img/banner-home4-sm.jpg') no-repeat;
+        background-size: cover;
+        @include breakpoint($end-small) {
+            background: url('../v2_0/img/banner-home4-lg.jpg') no-repeat;
+            background-size: cover;
+        }
+
         }
 
         &#banner-05,
         &#banner-05_clone{
-        background-image: url('../v1_1/img/banner-5-wide.jpg');
-            .banner-content {
-                top: 10%;
-                @include breakpoint($end-small) {
-                    top: 23%;
-                }
-                h1{
-                  //  font-size: 3vw;
-                    @include breakpoint($end-small) {
-                       // font-size: 2vw;
-                        max-width: 525px;
-                    }
-                }
-            }
-
-        }
-
-         #search &, #job & , #job-location &, #job-match & {
-            background-image: url('../v1_1/img/banner-3-wide.jpg');
-        }
-        #career-areas & {
-            height: 18.2vw;
-            max-height: 500px;
-    background-image: url(../v1_1/img/banner-1-wide.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-   // background-position: 86px 0px;
-    width: 100%;
-    margin-top: -6px;
-
-    @include breakpoint($end-small) {
-      //  background-position: 86px -70px;
-    }
-        }
-        #working & {
-            background-image: url('../v1_1/img/banner-5-wide-alternative-pic.jpg');
-        }
-    }
-
-    .banner-content {
-        position: relative;
-        left: 10px;
-        padding: 0;
-        top: 30%;
+        background: url('../v2_0/img/banner-home5-sm.jpg') no-repeat;
+        background-size: cover;
         @include breakpoint($end-small) {
-            left: 25px;
-            top: 32%;
-        }
-        @include breakpoint($most-max-width) {
-            left: calc(50% - 615px);
+            background: url('../v2_0/img/banner-home5-lg.jpg') no-repeat;
+            background-size: cover;
         }
 
 
-        h1 {
-            @include vw-font(10, 320, 24px);
-            width: 39%;
-            max-width: 325px;
-             @include breakpoint($end-small) {
-                 max-width: 330px;
-                 font-size: 24px;
-             }
-             @include breakpoint($most-max-width) {
-                 font-size: 39px;
-                 max-width: 435px;
-             }
-        }
-       #search &, #job &, #job-location &, #job-match &  {
-            top: 20%;
-            @include breakpoint($end-small) {
-                top: 27%;
-            }
-       }
-        #career-areas & {
-            top: 20%;
-            @include breakpoint($end-small) {
-                top: 23%;
-            }
         }
     }
+
+    .banner-text {
+      height: 185px;
+      background: #002d59;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include breakpoint(410px) {
+        height: 150px;
+      }
+      @include breakpoint($end-small) {
+        background: none;
+        position: absolute;
+        width: 100%;
+        max-width: 1240px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      h1 {
+        color: #fff;
+        font-family: "palatino";
+        font-weight: 400;
+        text-align: center;
+        padding: 20px;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        @include breakpoint($end-small) {
+          max-width: 400px;
+          margin: 0 auto 0 0;
+        }
+        @include breakpoint(1000px) {
+          max-width: 500px;
+          font-size: 43px;
+        }
+      }
+    }
+
 }
 
-.banner-wrapper #banner-02 .banner-content h1,
-.banner-wrapper #banner-03 .banner-content h1 {
-  max-width: 420px;
-}
-
-.banner-wrapper #banner-05 .banner-content {
-top: 20%;
-  h1 {
-  max-width: 420px;
-  }
-}
 
 
 /*
@@ -1371,6 +1224,7 @@ top: 20%;
 .flexslider-banner .slides > li,
 .flexslider .slides > li  {
   display: none;
+  position: relative;
   -webkit-backface-visibility: hidden;
 }
 .flexslider-banner .slides img,
@@ -1616,31 +1470,37 @@ About Section
     }
     ul {
         list-style-type: none;
-        @include breakpoint($end-small) {
+        @include breakpoint(650px) {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             position: relative;
             width: 100%;
             border-spacing: 25px 0;
             margin: 0 auto;
         }
+
+        &:after {
+         content: "";
+         flex: 0 1 32%;
+         }
     }
-    .first-row {
-        @include breakpoint($end-small) {
-            margin-bottom: 25px;
-        }
-    }
+
     li {
         width: 100%;
-        margin-bottom: 19px;
+        margin-bottom: 10px;
         position: relative;
-        @include breakpoint($end-small) {
-            display: inline-block;
-            width: 31%;
-            margin: 0 8px;
-
-
+        @include breakpoint(650px) {
+            width: 49%;
+        }
+        @include breakpoint(930px) {
+            width: 32%;
+            margin-bottom: 13px;
+        }
+        @include breakpoint(1230px) {
+            width: 24%;
+            margin-bottom: 15px;
         }
     }
     .photo-square {
@@ -1764,11 +1624,13 @@ About Section
         font-size: 0;
         background: none;
         border: none;
+        cursor: pointer;
 
         &:after {
           content: "\00D7";
           font-size: 40px;
           line-height: 1;
+
         }
       }
     }
@@ -1802,64 +1664,7 @@ About Section
 
 
 
-    // .entry-text {
-    //     background-color: #0090ac;
-    //     padding: 16px;
-    //     margin: 0 0 19px 0;
-    //     position: relative;
-    //     @include breakpoint($end-small) {
-    //         position: absolute;
-    //         margin: 19px 0;
-    //         left: 25px;
-    //         padding: 16px 28px;
-    //         width: calc(100% - 50px);
-    //         z-index: 5;
-    //         &.extra-space {
-    //             margin: 250px 0 !important;
-    //         }
-    //     }
-    //     h4, p {
-    //         color: #fff;
-    //     }
-    //     h4 {
-    //         font-size: 20px;
-    //         padding-right: 30px;
-    //         display: block;
-    //         strong, span {
-    //             display: block;
-    //             line-height: 1em;
-    //         }
-    //         span {
-    //             font-size: 14px;
-    //             font-weight: normal;
-    //             margin-top: 4px;
-    //         }
-    //     }
-    //     p {
-    //         font-size: 14px;
-    //         margin-bottom: 6px;
-    //     }
-    //     .close {
-    //         width: 22px;
-    //         text-indent: -9999px;
-    //         height: 22px;
-    //         display: block;
-    //         position: absolute;
-    //         top: 6px;
-    //         right: 6px;
-    //         border: 0;
-    //         background-color: transparent;
-    //         -webkit-appearance: none;
-    //         background-size: 100% 100%;
-    //         background-position: center center;
-    //         background-repeat: no-repeat;
-    //         background-image: url('//tbcdn.talentbrew.com/company/451/v1_1/img/x-button.png');
-    //         @include breakpoint($end-small) {
-    //             top: 17px;
-    //             right: 19px;
-    //         }
-    //     }
-    // }
+
 }
 
 /* =================================================================
@@ -1949,6 +1754,14 @@ Social Media
 		 @include icon-bg-twitter(#6b6d6f, none);
 		 background-size: 40px;
 	 }
+   &.social-media-healthclub{
+		 background-image: url("../v2_0/img/social-bar-icon.png");
+		 background-size: 36px;
+	 }
+   &.social-media-news{
+    background-image: url("../v2_0/img/social-news-icon.png");
+    background-size: 38px;
+  }
 	 &.social-media-facebook {
 		 @include icon-bg-facebook(none, #6b6d6f);
 	 }
@@ -2283,43 +2096,7 @@ Meet The Team
 }
 
 
-.our-jobs {
-    @include clearfix;
-     margin-top: 10px;
-    @include breakpoint($end-small) {
-        margin-top: 55px;
-        padding: 0 20px;
-        display: -ms-flexbox;
-      display: flex;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
-    }
-    @include breakpoint(1280px) {
-        padding: 0;
-    }
-    .data-form {
-        @include breakpoint($end-small) {
-            width: 50%;
-            -ms-flex-item-align: start;
-            align-self: flex-start;
 
-        }
-    }
-    .recent.job-list {
-        margin-top: 20px;
-        @include breakpoint($end-small) {
-             margin-top: 40px;
-        }
-    }
-    .right-column {
-        @include breakpoint($end-small) {
-             width: 50%;
-             padding: 0 0 0 70px;
-        }
-    }
-}
 
 /* =================================================================
 Job Alerts
@@ -2619,6 +2396,9 @@ Related Content Module
     padding: 10px;
     max-width: 1100px;
     margin: 0 auto;
+    @include breakpoint($end-small) {
+      padding: 10px 10px 55px;
+    }
 
     .related-content-link-wrap {
         width: 100%;
@@ -2648,13 +2428,22 @@ Related Content Module
 
     li {
         padding: 10px 10px 0;
-        margin: 10px 0;
+        margin: 10px auto;
         background: #001a3c;
+        max-width: 300px;
         // border: 10px solid #001a3c;
 
         @include breakpoint($end-small) {
-            // max-width: 300px;
+          margin: 0;
+            width: 33.3%;
         }
+
+        &:not(:last-of-type) {
+          @include breakpoint($end-small) {
+            margin-right: 10px;
+          }
+        }
+
     }
 
     h3 {
@@ -2738,21 +2527,54 @@ search form
     }
 
 	p {
+    position: relative;
 		margin: 0 0 15px;
 		@include breakpoint($end-small) {
       margin: 0 15px 0;
       flex: 1;
 		}
+
+
 	}
 
-	label {
-		display: none;
-		text-align: left;
-		@include font-size(12px);
-		@include breakpoint($end-small) {
-		    display: none;
-		}
-	}
+
+
+  // label/placeholder animation
+
+    label {
+      display: block;
+      color: #000;
+      font-size: 12px;
+      background-color: #f1f1f1;
+      width: calc(100% - 20px);
+      color: #002e56;
+      display: block;
+      padding: 4px 0;
+      left: 10px;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      pointer-events: none;
+      transition: all 0.15s ease;
+      text-align: left;
+      @include breakpoint($end-small) {
+        font-size: 16px;
+      }
+
+    }
+
+    p input.has-text + label, p input:focus + label, p select:not(:disabled) + label {
+            top: 58px;
+            background: none;
+        @include breakpoint($end-small) {
+          top: -15px;
+          left: 0;
+              background: none;
+        }
+      }
+
+  //  end label/placeholder animation
 
 	input, select {
 		border: 1px solid $accent;
@@ -2801,45 +2623,7 @@ search form
 		}
 	}
 
-	.search-toggle {
-		display: block;
 
-
-		.js & {
-			display: block;
-      position: relative;
-      font-size: 18px;
-      font-weight: bold;
-        background-color: #fff;
-        margin-top: 1em;
-        padding: 5px;
-        &:after {
-        content: " ";
-        width: 12px;
-        height: 14px;
-        display: inline-block;
-        background: url("//tbcdn.talentbrew.com/company/451/v1_0/img/ico-arrow-solid-down.png") right top no-repeat;
-        background-size: 12px 14px;
-        position: absolute;
-        margin: 2px 0 0 6px;
-        }
-
-
-			@include breakpoint($end-small) {
-				display: none;
-			}
-
-      &.expandable-child-open,
-      &.hover,
-      &.focus {
-      color: $primary;
-      &:after {
-        background: url("//tbcdn.talentbrew.com/company/451/v1_0/img/ico-arrow-up.png") right top no-repeat;
-
-        }
-      }
-		}
-	}
 
 	button {
 	    @include button(#002d59, 14px);
@@ -2945,17 +2729,6 @@ advanced search form
 search results, and Job Matching - result list
 ================================================================= */
 
-// #search main {
-//     padding: 11px;
-//     @include breakpoint($end-small) {
-//         max-width: $most-max-width;
-//         margin: 0 auto;
-//         padding: 55px 11px;
-//     }
-//       @include breakpoint($most-max-width) {
-//         padding: 55px 0;
-//       }
-// }
 
 .search-wrap {
   padding: 0 10px;
@@ -3445,8 +3218,8 @@ search results - pagination
         text-transform: uppercase;
         border-radius: 2px;
         &.disabled {
-            background-color: gray;
-            cursor: default;
+            display: none;
+
         }
     }
 }
@@ -3720,7 +3493,8 @@ job details - style overrides for ATS description
 	h2 {
 		font-size: 1.08em;
 		margin: 0 0 .5em 0;
-	}
+}
+
 	p, div, span, font {
 		font-family: $base-font-family;
 		font-size: 1em !important;
@@ -4022,253 +3796,21 @@ Secondary Pages
 
 
 /* =================================================================
-CP - Career Areas
-================================================================= */
-
-// .cultivate {
-//     h2 {
-//         font-size: 18px;
-//     }
-//
-//     p {
-//         font-size: 14px;
-//     }
-// }
-//
-// .working-content {
-//     position: relative;
-//     margin: 0 auto;
-//         height: auto;
-//     display: block;
-//     @include clearfix;
-//
-//     @include breakpoint($end-small) {
-//         max-width: none;
-//         transition: 0.6s ease-in-out;
-//     }
-//     p{
-//         font-size: 1rem;
-//         line-height: 1.8em;
-//     }
-//     ul {
-//         @include breakpoint($end-small) {
-//             float: right;
-//         }
-//     }
-//
-//     li {
-//         margin: 0 0 12px;
-//
-//         ul li, ol li {
-//             font-size: 1rem;
-//             line-height: 1.8em;
-//         }
-//     }
-//
-//     a.link {
-//         background-color: $lt-gray;
-//         padding: 0 5px;
-//         display: block;
-//         text-align: center;
-//         font-weight: bold;
-//         color: $primary;
-//         transition: background-color .6s ease;
-//         font-size: 16px;
-//         line-height: 36px;
-//         position: relative;
-//         display: block;
-//         z-index: 9999;
-//         @include breakpoint($end-small) {
-//             width: 300px;
-//         }
-//         &:hover {
-//             background-color: darken($lt-gray, 9%);
-//         }
-//
-//         &:after {
-//             content: '';
-//             display: inline-block;
-//             width: 40px;
-//             height: 30px;
-//             background-image: url('//tbcdn.talentbrew.com/company/451/v1_0/img/CA-icons.png');
-//             vertical-align: middle;
-//             background-position: 0 0;
-//             margin-top: -4px;
-//             margin-left: 5px;
-//         }
-//
-//         &.behavioral:after {
-//             background-position: 0 -31px;
-//         }
-//
-//         &.food:after {
-//             background-position: 0 -61px;
-//         }
-//
-//         &.labs:after {
-//             background-position: 0 -92px;
-//         }
-//
-//         &.nurse:after {
-//             background-position: 0 -124px;
-//         }
-//
-//         &.pharmacy:after {
-//             background-position: 0 -154px;
-//         }
-//
-//         &.speech:after {
-//             background-position: 0 -185px;
-//         }
-//
-//         &.rad:after {
-//             background-position: 0 -218px;
-//         }
-//
-//         &.support:after {
-//             background-position: 0 -248px;
-//         }
-//
-//         &.medical:after {
-//             background-position: 0 -277px;
-//         }
-//
-//         &.insurance:after {
-//             background-position: 0 -309px;
-//         }
-//
-//         &.beyond:after {
-//             background-position: 0 -340px;
-//         }
-//
-//         &.faqs:after {
-//             background-position: 0 -370px;
-//         }
-//
-//         &.active {
-//             background-color: $primary;
-//             color: #fff;
-//
-//             &:after {
-//                 background-position-x: -38px;
-//             }
-//         }
-//     }
-//
-//     div {
-//         padding: 0;
-//         background-color: white;
-//         max-height: 0;
-//         //overflow: hidden;
-//         opacity: 0;
-//         height: 100%;
-//         @include font-size(12px);
-//
-//         @include breakpoint($end-small) {
-//             position: absolute;
-//             top: 0;
-//             bottom: 11px; // 0;
-//             left: 0;
-//             width: calc(100% - 320px);
-//             transition: 0.6s ease-in-out;
-//             transition-property: opacity;
-//         }
-//
-//         &.show {
-//             opacity: 1;
-//             max-height: 6000px;
-//             z-index: 999999999999;
-//             height: 100%;
-//             //overflow-y: auto;
-//         }
-//
-//         h3 {
-//             font-size: 22px;
-//             word-break: break-word;
-//         }
-//         h4 {
-//             font-size: 20px;
-//         }
-//         .career-link {
-//             font-weight: bold;
-//             text-decoration: underline;
-//             font-size: 1rem;
-//             line-height: 1.8em;
-//                 z-index: 999999;
-//             position: relative;
-//             display: flex;
-//             align-items: center;
-//         }
-//     }
-// }
-//
-// .team, .benefits.inner-wrapper, .cultivate.inner-wrapper {
-//     @include breakpoint($end-small) {
-//         padding: 0 20px;
-//     }
-//     @include breakpoint($most-max-width) {
-//         padding: 0;
-//     }
-// }
-//
-// .cultivate.inner-wrapper {
-//     @include breakpoint($end-small) {
-//         margin-top: 46px;
-//     }
-//     h2 {
-//         font-size: 18px;
-//         line-height: 1.4em;
-//         margin-top: 10px;
-//         @include breakpoint($end-small) {
-//             font-size: 26px;
-//             margin-top: 0;
-//         }
-//     }
-//     > p {
-//         font-size: 12px;
-//         @include breakpoint($end-small) {
-//             font-size: 14px;
-//         }
-//         &.strong {
-//             font-size: 14px;
-//             font-style: italic;
-//             @include breakpoint($end-small) {
-//                 font-size: 22px;
-//             }
-//         }
-//     }
-//     .career-content {
-//         margin-top: 25px;
-//         @include breakpoint($end-small) {
-//         }
-//     }
-// }
-// .career-content .list{
-//     float: none !important;
-//
-//     li {
-//     text-indent: -6px;
-//     }
-// }
-//
-// .team.inner-wrapper {
-//     padding-bottom: 15px;
-//         height: auto;
-//     display: block;
-//     @include breakpoint($end-small){
-//         //overflow-y: hidden;
-//     }
-// }
-/* =================================================================
-CP - Working At BWFH
+CP - Working At BWFH & Career Areas
 ================================================================= */
 
 .content-intro {
-  padding: 0 10px;
+  padding: 0 10px 10px;
+  max-width: 1260px;
+  margin: 0 auto;
+  @include breakpoint($end-small) {
+    padding: 30px 10px 30px;
+  }
 
   &__heading {
     font-size: 30px;
     font-family: "palatino";
+    line-height: 1.3;
     color: $primary;
     font-weight: 600;
   }
@@ -4284,14 +3826,20 @@ CP - Working At BWFH
   &__section {
     background: #f1f1f1;
     padding: 20px 10px;
+    @include breakpoint($end-small) {
+      padding: 50px 10px;
+      @include clearfix;
+    }
   }
 
   &__wrap {
-
+    max-width: 1240px;
+    margin: 0 auto;
   }
 
   &__link-list {
     margin-bottom: 35px;
+    display: inline-block;
   }
 
   &__link {
@@ -4317,6 +3865,10 @@ CP - Working At BWFH
 
 .tab-content {
   display: none;
+  @include breakpoint(1000px) {
+    float: right;
+    width: calc(100% - 300px;)
+  }
 
   &.current {
     display: block;
@@ -4334,6 +3886,10 @@ CP - Working At BWFH
     line-height: 1.3;
   }
 
+  &__text {
+    line-height: 1.3;
+  }
+
   &__list {
 
   }
@@ -4345,12 +3901,65 @@ CP - Working At BWFH
   &__item-heading {
     font-size: 16px;
     line-height: 1.2;
-    margin: 0 0 5px;
+    margin: 0 0 7px;
+    color: #2f2f2f;
+  }
+
+  &__item-heading-big {
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 7px;
+    color: #2f2f2f;
+  }
+
+  &__item-sub-heading {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 22px 0 7px;
+    color: #2f2f2f;
   }
 
   &__item-text {
     margin: 0;
     line-height: 1.3;
+
+    b {
+      color: #2f2f2f;
+    }
+
+    a {
+      word-break: break-all;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    background: $primary;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 15px;
+
+
+    &:hover {
+      color: #fff;
+    }
+
+  }
+
+  &__number-list {
+    margin-left: 20px;
+  }
+
+  &__number-list-item {
+    list-style-type: decimal;
+    margin-bottom: 10px;
+    line-height: 1.3;
+
+    b {
+      color: #2f2f2f;
+    }
   }
 
   .tab-content__acc-content {
@@ -4359,6 +3968,11 @@ CP - Working At BWFH
     border: 1px solid;
     border-width: 0 1px 1px;
     margin-top: -5px;
+    max-height: 600px;
+    overflow: scroll;
+    position: relative;
+
+
 
     &.general {
       border-color: #002d59;
@@ -4372,6 +3986,21 @@ CP - Working At BWFH
     &.interviews {
       border-color: #0089ce;
     }
+
+    .read-more {
+        display: block;
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin: 0; padding: 30px 0;
+        transition: .1s;
+        text-indent: -9999em;
+    }
+
+
   }
 
   &__acc-button {
@@ -4383,6 +4012,15 @@ CP - Working At BWFH
      padding: 10px;
      color: #fff;
      font-weight: 600;
+
+     &:after {
+       content: " ";
+       background: url('../v2_0/img/select-arrow.png');
+       display: inline-block;
+       width: 11px;
+       height: 17px;
+       float: right;
+     }
 
      &.general {
        background: #002d59;
@@ -4412,100 +4050,6 @@ CP - Working At BWFH
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-// #working {
-//     .benefits {
-//         p,
-//         ul,
-//         ol {
-//             font-size: 14px !important;
-//         }
-//
-//     }
-//     #benefits{
-//         ul li{
-//             margin-left: 20px;
-//             font-size: 1rem;
-//             line-height: 1.8em;
-//         }
-//     }
-//     p.fine-print {
-//         font-size: 14px !important;
-//         font-style: italic !important;
-//     }
-// }
-//
-// .working-content {
-//
-//     .faqs-wrapper {
-//         opacity: 0;
-//         max-height: 0;
-//         position: relative;
-//         transition: 0.6s ease-in-out;
-//         overflow-y: hidden;
-//
-//         ul {
-//             float: none;
-//         }
-//
-//         .faq-link {
-//             padding: 10px 20px;
-//             display: block;
-//             color: #fff;
-//             font-size: 16px;
-//             font-weight: bold;
-//             text-transform: uppercase;
-//             position: relative;
-//             z-index: 99;
-//             &.general {
-//                 background-color: #358195;
-//             }
-//
-//             &.job-search {
-//                 background-color: #005e79;
-//             }
-//
-//             &.process {
-//                 background-color: #013847;
-//             }
-//
-//             &.screening {
-//                 background-color: #000;
-//             }
-//
-//             &:after {
-//                 content: "+";
-//                 font-size: 1.4em;
-//                 margin-right: 0;
-//                 float: right;
-//             }
-//
-//             &.active:after {
-//                 content: "\2013";
-//                 @include font-size(25.6px);
-//                 margin-top: 0;
-//                 position: relative;
-//                 right: 1px;
-//             }
-//         }
-//
-//         div {
-//             position: relative;
-//             width: 100%;
-//             transition: 1.0s ease-in-out;
-//         }
-//     }
-// }
 
 /* =================================================================
 Footer
@@ -4885,37 +4429,7 @@ Job Alerts Management
         }
     }
 }
-// .fb_iframe_widget{
-//     width:100%;
-//     @include breakpoint($end-small) {
-//       width: 50%;
-//     }
-//
-//     iframe {
-//         padding: 0;
-//         width: 100%;
-//         @include breakpoint($end-small){
-//            padding: 15px 15px 0px 15px;
-//         }
-//     }
-//     span, .fb_iframe_widget_fluid span{
-//         width:100%;
-//         height: 540px !important;
-//         margin: 0px auto !important;
-//         display: block !important;
-//         @include breakpoint(500px){
-//             //padding: 20px 0;
-//             //padding-left: calc(50% - 250px);
-//             //padding-right: calc(50% - 250px);
-//             background-color: #f1f1f1;
-//                 display: inline-block;
-//             margin-top: 20px;
-//             position: relative;
-//             text-align: justify;
-//             padding: 0px;
-//         }
-//     }
-// }
+
 .ats-description{
     .contentlinepanel{
         h2{

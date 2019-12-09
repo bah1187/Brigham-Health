@@ -32,6 +32,36 @@ global variables
     });
 
     /* =========================================================================
+    Search Form Label for accessibility
+    ========================================================================= */
+
+    $('.search-form p input, .second p input').focusout(function() {
+        if( $(this).val() != 0) {
+          $(this).addClass('has-text');
+        } else {
+          $(this).removeClass('has-text');
+        }
+      });
+
+      $(function() {
+          var checkTimer = setInterval(function() {
+            // Check if the system cooked a location
+            	$('.search-form p input').each(function() {
+                if( $(this).val() != 0) {
+                  $(this).addClass('has-text');
+                } else {
+                  $(this).removeClass('has-text');
+                }
+            	});
+          }, 500);
+
+          // Clear timer after 3 seconds equalling 6 attempts
+          setTimeout(function() {
+              clearInterval(checkTimer);
+          }, 3300);
+      }); 
+
+    /* =========================================================================
      Close for new meet the team module
     ========================================================================== */
 
@@ -140,6 +170,7 @@ $("#carousel .slides li").click(function() {
             animationLoop: true,
             controlNav: false,
             directionNav: false,
+            // smoothHeight: true,
             pausePlay: false,
             start: function(slider){
             $('body').removeClass('loading');
@@ -177,6 +208,8 @@ $(document).ready(function(){
 
 })
 
+// FAQ accordian
+
 $(".tab-content__acc-button").click(function(){
 
   $(this).attr("aria-expanded", function (i, attr) {
@@ -186,6 +219,15 @@ $(".tab-content__acc-button").click(function(){
   });
 
 });
+
+// Read more fade on scroll
+
+$(document).ready(function(){
+    $('.tab-content__acc-content').scroll(function(){
+        $(this).find(".read-more").css("opacity", 1 - $(this).scrollTop() / $(this).find(".read-more").height());
+    });
+});
+
 
 //toggle for Working at BWFH - CP
 // $('.working-content > ul a.link').click(function(e) {
